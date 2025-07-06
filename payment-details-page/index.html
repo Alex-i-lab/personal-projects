@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment-page</title>
+    <link rel="stylesheet" href="main.css"
+</head>
+<body>
+    <div class="checkout-form">
+        <h2>Credit Card Payment</h2>
+        <form>
+        <label for="name">Cardholder Name</label>
+        <input type="text" id="name" placeholder="John Doe" required>
+
+        <label for="card-number">Card Number</label>
+        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required maxlength="19">
+
+        <div class="row">
+        <div class="col">
+            <label for="exp-month">Exp. Month</label>
+            <input type="text" id="exp-month" placeholder="MM" required maxlength="2">
+        </div>
+        <div class="col">
+            <label for="exp-year">Exp. Year</label>
+            <input type="text" id="exp-year" placeholder="YY" required maxlength="2">
+        </div>
+        <div class="col">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="123" required maxlength="4">
+        </div>
+        </div>
+
+        <label for="zip">ZIP / Postal Code</label>
+        <input type="text" id="zip" placeholder="10001" required>
+        <div class="options">
+            <a href="#" target="blank">Use Paypal instead</a><br>
+            <a id="card" href="#" target="blank">
+                <img src="credit-card.svg" alt="Credit card icon representing payment option, displayed in a clean and modern checkout form environment">
+            </a>
+        </div>
+
+        <div id="button-container">
+            <button type="submit">Subscribe</button>
+        </div>
+    </form>
+    </div>
+<script src="script.js" ></script> 
+</body>
+</html>
+
+
+
