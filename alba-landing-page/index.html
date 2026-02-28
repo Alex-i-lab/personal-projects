@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALBA | Premium Global Logistics</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-slate-900">
+
+    <!-- Floating Glass Navbar -->
+    <div class="glass-nav-container" id="navContainer">
+        <nav class="glass-nav">
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <img src="assets/ALBA icon.png" alt="ALBA logo" class="w-10 h-10 object-contain rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                <span class="text-xl font-black tracking-tighter text-slate-950">ALBA</span>
+            </div>
+            
+            <div class="hidden lg:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                <a href="#services" class="nav-link hover:text-[#FF7A01]">Logistics</a>
+                <a href="#network" class="nav-link hover:text-[#FF7A01]">Intelligence</a>
+                <a href="#fleet" class="nav-link hover:text-[#FF7A01]">Fleet</a>
+                <a href="#contact" class="nav-link hover:text-[#FF7A01]">Connect</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button class="hidden sm:flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-[#FF7A01] transition">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    Track
+                </button>
+                <button class="btn-premium text-sm">
+                    Ship Now
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center hero-mesh pt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="reveal inline-flex items-center gap-3 px-4 py-2 mb-8 rounded-full bg-[#FF7A01]/10 border border-[#FF7A01]/20 backdrop-blur-md text-[#FF7A01]/50 text-[10px] font-bold uppercase tracking-widest">
+                        <span class="flex h-2 w-2 rounded-full bg-[#FF7A01] animate-ping"></span>
+                        Now Serving 180+ Global Hubs
+                    </div>
+                    
+                    <h1 class="reveal text-6xl md:text-8xl font-extrabold text-white mb-8 leading-[1.05] tracking-tight">
+                        Global trade, <br>
+                        <span class="text-[#FF7A01]">synchronized.</span>
+                    </h1>
+                    
+                    <p class="reveal text-lg text-white mb-10 leading-relaxed max-w-lg font-light" style="transition-delay: 100ms">
+                        ALBA orchestrates complex supply chains with surgical precision and real-time intelligence. Elevate your delivery standard.
+                    </p>
+                    
+                    <div class="reveal flex flex-wrap gap-4" style="transition-delay: 200ms">
+                        <button class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-2xl shadow-slate-900/30">
+                            Partner with ALBA
+                        </button>
+                        <a href="#network" class="bg-white/5 backdrop-blur-md border border-white/10 text-white px-10 py-5 rounded-2xl font-bold hover:bg-white/10 transition-all text-center">
+                            View Network
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reveal hidden lg:block" style="transition-delay: 300ms">
+                    <div class="relative">
+                        <div class="absolute -top-20 -right-10 w-64 h-64 bg-[#FF7A01]/20 rounded-full blur-[100px] animate-pulse"></div>
+                        <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] shadow-3xl">
+                            <div class="flex items-center justify-between mb-10">
+                                <h4 class="text-white font-bold">Fleet Telemetry</h4>
+                                <div class="px-3 py-1 bg-[#FF7A01]/10 text-[#FF7A01] text-[10px] font-bold rounded-full uppercase tracking-widest">Live</div>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full w-[78%] bg-gradient-to-r from-[#FF7A01] to-[#252422]"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                                        <div class="text-[10px] text-slate-500 uppercase font-bold mb-1">Efficiency</div>
+                                        <div class="text-white font-bold text-lg">94.2%</div>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                                        <div class="text-[10px] text-slate-500 uppercase font-bold mb-1">Active Nodes</div>
+                                        <div class="text-white font-bold text-lg">1,204</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-32 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="reveal text-center mb-24">
+                <h2 class="text-[#FF7A01] font-extrabold uppercase tracking-[0.3em] text-[10px] mb-4">Precision Engineering</h2>
+                <p class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">Our Core Infrastructure</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="reveal float-card group p-12 rounded-[2.5rem] bg-white border border-slate-100" style="transition-delay: 100ms">
+                    <div class="w-16 h-16 bg-[#FF7A01]/10 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-[#FF7A01] transition-all duration-500 rotate-3 group-hover:rotate-0">
+                        <i data-lucide="zap" class="text-[#FF7A01] w-8 h-8 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#252422]">Hyper-Local Distribution</h3>
+                    <p class="text-slate-500 leading-relaxed mb-8">Proprietary AI routing that slashes last-mile delivery times by 40% using real-time traffic telemetry.</p>
+                    <div class="h-1 w-12 bg-[#FF7A01] group-hover:w-full transition-all duration-500 rounded-full"></div>
+                </div>
+
+                <div class="reveal float-card group p-12 rounded-[2.5rem] bg-white border border-slate-100" style="transition-delay: 200ms">
+                    <div class="w-16 h-16 bg-[#FF7A01]/10 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-[#FF7A01] transition-all duration-500 -rotate-3 group-hover:rotate-0">
+                        <i data-lucide="shield-check" class="text-[#FF7A01] w-8 h-8 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#252422]">Quantum Security</h3>
+                    <p class="text-slate-500 leading-relaxed mb-8">Every shipment is secured with blockchain-backed tracking and biometric cargo verification.</p>
+                    <div class="h-1 w-12 bg-[#FF7A01] group-hover:w-full transition-all duration-500 rounded-full"></div>
+                </div>
+
+                <div class="reveal float-card group p-12 rounded-[2.5rem] bg-white border border-slate-100" style="transition-delay: 300ms">
+                    <div class="w-16 h-16 bg-[#FF7A01]/10 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-[#FF7A01] transition-all duration-500 rotate-6 group-hover:rotate-0">
+                        <i data-lucide="globe" class="text-[#FF7A01] w-8 h-8 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#252422]">Green Supply Chain</h3>
+                    <p class="text-slate-500 leading-relaxed mb-8">Carbon-neutral shipping initiatives integrated directly into your supply chain dashboard.</p>
+                    <div class="h-1 w-12 bg-[#FF7A01] group-hover:w-full transition-all duration-500 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Network Intelligence (DETAILED SVG MAP) -->
+    <section id="network" class="py-32 bg-slate-900 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <h2 class="text-[#FF7A01] font-bold uppercase tracking-[0.3em] text-[10px] mb-4">Global Reach</h2>
+                    <h3 class="text-5xl font-black text-white mb-8 leading-tight">The world, <br>optimized for you.</h3>
+                    <p class="text-slate-400 text-lg leading-relaxed mb-10">ALBA's neural network spanning 142 countries ensures your cargo is never more than 90 minutes away from a major logistics node.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700">
+                            <h4 class="font-bold text-white text-2xl mb-1">140k+</h4>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Daily Flights</p>
+                        </div>
+                        <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700">
+                            <h4 class="font-bold text-white text-2xl mb-1">2.4m</h4>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Active Assets</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D3-rendered World Map (GeoJSON/TopoJSON) -->
+                <div class="reveal relative aspect-video bg-slate-950/50 rounded-[3rem] border border-slate-800 shadow-2xl p-6 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#FF7A01]/5 to-transparent pointer-events-none"></div>
+                    <svg id="d3-map" class="world-map-svg" preserveAspectRatio="xMidYMid meet"></svg>
+
+                    <div class="absolute top-6 left-6 flex items-center gap-3">
+                        <div class="px-3 py-1 bg-[#FF7A01]/10 border border-[#FF7A01]/20 rounded-full flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-[#FF7A01] rounded-full animate-pulse"></span>
+                            <span class="text-[9px] font-bold text-[#FF7A01] uppercase tracking-widest">Live Signals</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="py-32 bg-[#252422] relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="reveal text-center mb-24">
+                <h2 class="text-[#FF7A01] font-extrabold uppercase tracking-[0.3em] text-[10px] mb-4">Autonomous Fleet</h2>
+                <p class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Modern Transport Assets</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="reveal fleet-card p-8 rounded-3xl" style="transition-delay: 100ms">
+                    <div class="w-12 h-12 bg-[#FF7A01]/10 rounded-xl flex items-center justify-center mb-6 border border-[#FF7A01]/20">
+                        <i data-lucide="plane" class="text-[#FF7A01] w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Air Freight</h4>
+                    <p class="text-slate-400 text-sm mb-6">Boeing 747-8F specialist carriers for priority intercontinental delivery.</p>
+                    <div class="flex justify-between items-center text-xs font-bold uppercase tracking-tighter">
+                        <span class="text-slate-500">Units</span>
+                        <span class="text-[#FF7A01]">84 Active</span>
+                    </div>
+                </div>
+
+                <div class="reveal fleet-card p-8 rounded-3xl" style="transition-delay: 200ms">
+                    <div class="w-12 h-12 bg-[#FF7A01]/10 rounded-xl flex items-center justify-center mb-6 border border-[#FF7A01]/20">
+                        <i data-lucide="ship" class="text-[#FF7A01] w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Ocean Carriers</h4>
+                    <p class="text-slate-400 text-sm mb-6">ULCV class vessels equipped with IoT environment-controlled containers.</p>
+                    <div class="flex justify-between items-center text-xs font-bold uppercase tracking-tighter">
+                        <span class="text-slate-500">TEU Cap.</span>
+                        <span class="text-[#FF7A01]">22,000+</span>
+                    </div>
+                </div>
+
+                <div class="reveal fleet-card p-8 rounded-3xl" style="transition-delay: 300ms">
+                    <div class="w-12 h-12 bg-[#FF7A01]/10 rounded-xl flex items-center justify-center mb-6 border border-[#FF7A01]/20">
+                        <i data-lucide="truck" class="text-[#FF7A01] w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Electric Haulage</h4>
+                    <p class="text-slate-400 text-sm mb-6">Semi-autonomous EV trucks designed for zero-emission regional logistics.</p>
+                    <div class="flex justify-between items-center text-xs font-bold uppercase tracking-tighter">
+                        <span class="text-slate-500">Range</span>
+                        <span class="text-[#FF7A01]">800km</span>
+                    </div>
+                </div>
+
+                <div class="reveal fleet-card p-8 rounded-3xl" style="transition-delay: 400ms">
+                    <div class="w-12 h-12 bg-[#FF7A01]/10 rounded-xl flex items-center justify-center mb-6 border border-[#FF7A01]/20">
+                        <i data-lucide="navigation" class="text-[#FF7A01] w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Urban Drones</h4>
+                    <p class="text-slate-400 text-sm mb-6">AI-controlled drone network for rapid medical and small parcel delivery.</p>
+                    <div class="flex justify-between items-center text-xs font-bold uppercase tracking-tighter">
+                        <span class="text-slate-500">Nodes</span>
+                        <span class="text-[#FF7A01]">450 Hubs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="py-24 border-y border-slate-100 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 mb-12">Empowering Global Enterprises</p>
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all">
+                <div class="flex items-center gap-2 font-black text-2xl tracking-tighter"><i data-lucide="layers" class="w-6 h-6"></i> STACK</div>
+                <div class="flex items-center gap-2 font-black text-2xl tracking-tighter"><i data-lucide="cpu" class="w-6 h-6"></i> NEXUS</div>
+                <div class="flex items-center gap-2 font-black text-2xl tracking-tighter"><i data-lucide="activity" class="w-6 h-6"></i> PULSE</div>
+                <div class="flex items-center gap-2 font-black text-2xl tracking-tighter"><i data-lucide="box" class="w-6 h-6"></i> CUBE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section id="contact" class="py-32 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="reveal relative bg-slate-900 rounded-[3.5rem] p-12 md:p-24 text-center overflow-hidden shadow-2xl shadow-slate-900/40">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+                <div class="relative z-10">
+                    <h2 class="text-white text-4xl md:text-6xl font-black mb-8 leading-tight">Ready to synchronize <br>your supply chain?</h2>
+                    <p class="text-slate-300 text-lg mb-12 max-w-xl mx-auto">Join the future of logistics with AI-integrated distribution networks.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="bg-[#FF7A01] text-white px-10 py-5 rounded-2xl font-bold hover:bg-[#FF7A01]/80 transition-all text-lg shadow-xl">Start Your Audit</button>
+                        <button class="bg-slate-800 text-white px-10 py-5 rounded-2xl font-bold hover:bg-slate-700 transition-all text-lg">Talk to an Expert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-white pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 border-b border-white/5 pb-20 mb-12">
+                <div class="max-w-xs">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="assets/ALBA icon.png" alt="ALBA logo" class="w-8 h-8 object-contain">
+                        
+                        <span class="text-xl font-black tracking-tighter">ALBA</span>
+                    </div>
+                    <p class="text-slate-400 text-sm">Redefining the logistics landscape through digital innovation.</p>
+                </div>
+                <div class="flex gap-20">
+                    <div>
+                        <h5 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-6">Explore</h5>
+                        <ul class="text-sm space-y-4 text-slate-300">
+                            <li><a href="#" class="hover:text-[#FF7A01] transition">Network</a></li>
+                            <li><a href="#" class="hover:text-[#FF7A01] transition">Sectors</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-6">Legal</h5>
+                        <ul class="text-sm space-y-4 text-slate-300">
+                            <li><a href="#" class="hover:text-[#FF7A01] transition">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p class="text-slate-500 text-[10px] font-bold tracking-[0.3em] uppercase">© 2025 Alex made it </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
