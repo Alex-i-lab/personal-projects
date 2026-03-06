@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>payment-page</title>
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="main.css"
 </head>
 <body>
     <div class="checkout-form">
         <h2>Credit Card Payment</h2>
-        <form>
+        <form id="payment-form">
         <label for="name">Cardholder Name</label>
         <input type="text" id="name" placeholder="John Doe" required>
 
@@ -32,15 +32,22 @@
         </div>
 
         <label for="zip">ZIP / Postal Code</label>
-        <input type="text" id="zip" placeholder="10001" required>
+        <input type="text" id="zip" placeholder="10001"required >
         <div class="options">
-            <a href="#" target="blank">Use Paypal instead</a><br>
+            <a href="https://www.sandbox.paypal.com/signin" target="_blank">Use Paypal instead</a><br>
+            <a id="card" href="#" target="blank">
+                <img src="credit-card.svg" alt="Credit card icon representing payment option, displayed in a clean and modern checkout form environment">
+            </a>
         </div>
 
         <div id="button-container">
             <button type="submit">Subscribe</button>
         </div>
     </form>
+    </div>
+    <div id="confirmation" class="confirmation-hidden">
+        <div class="tick">✔️</div>
+        <h2>Thanks for your purchase</h2>
     </div>
 <script src="script.js" ></script> 
 </body>
