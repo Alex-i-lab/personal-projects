@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empire Menswear | Premium Luxury Attire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+/*************  ✨ Windsurf Command 🌟  *************/
+:root {
+    --gold: #C5A059;
+    --dark-gold: #947a41;
+    --black: #0A0A0A;
+    --white: #ffffff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+    --bg-primary: var(--black);
+    --text-primary: var(--white);
+    --bg-secondary: #1a1a1a;
+    --border-color: var(--gray-600);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, .luxury-font {
+    font-family: 'Playfair Display', serif;
+}
+
+.bg-gold {
+    background-color: var(--gold);
+}
+
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.collection-card:hover img {
+    transform: scale(1.03);
+}
+
+.transition-all {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.collection-card:hover img { transform: scale(1.03); }
+.transition-all { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+}
+
+.sidebar-link.active { color: var(--gold); font-weight: 600; border-left: 2px solid var(--gold); padding-left: 1rem; }
+
+/* Mobile Menu Animation */
+#mobile-menu {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+}
+
+.sidebar-link.active {
+    color: var(--gold);
+    font-weight: 600;
+    border-left: 2px solid var(--gold);
+    padding-left: 1rem;
+}
+
+/* Mobile Menu Animation */
+#mobile-menu {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#mobile-menu.hidden-menu {
+    transform: translateX(100%);
+}
+
+/* Enhanced Navbar Link Animations */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--gold);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--gold);
+    transform: translateY(-1px);
+}
+
+/* Mobile menu nav links */
+.mobile-nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.mobile-nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    width: 0;
+    height: 2px;
+    background-color: var(--gold);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-link:hover::before {
+    width: 100%;
+}
+
+.mobile-nav-link:hover {
+    color: var(--gold);
+    transform: translateY(-2px);
+}
+
+/* Mobile Menu Animation */
+#mobile-menu {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#mobile-menu.hidden-menu {
+    transform: translateX(100%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+}
+.newsletter {
+    background-color: var(--black);
+}
+
+/*******  5c5fdd12-0534-4793-ae89-fc50ad5f57b1  *******/
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Announcement Bar -->
+    <div class="bg-gold text-white text-[10px] uppercase tracking-[0.3em] py-2.5 text-center font-light">
+        Global Atelier Shipping & Bespoke Consultations Available
+    </div>
+
+    <!-- Navigation --> 
+    <nav class="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-gray-600 px-10 lg:px-16 py-6">        
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-2xl font-bold tracking-[0.2em] uppercase cursor-pointer" onclick="showPage('home')">
+                <img src="assets/logo2.png" alt="Empire Menswear Logo" class="h-10 w-auto" onerror="this.outerHTML='<span class=\'luxury-font\'>EMPIRE</span>'">
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center space-x-10 text-[11px] font-semibold uppercase tracking-widest">
+                <a href="#" onclick="showPage('home')" class="nav-link">Home</a>
+                <a href="#" onclick="showPage('collections')" class="nav-link">Collections</a>
+                <a href="#" onclick="showPage('shop')" class="nav-link">Shop</a>
+                <a href="#" onclick="showPage('contact')" class="nav-link">Contact</a>
+                <div class="flex items-center space-x-4 ml-4">
+                    <div class="relative cursor-pointer group" onclick="toggleCart()">
+                        <svg class="w-5 h-5 group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-gold text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center font-bold">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Actions -->
+            <div class="flex lg:hidden items-center space-x-6">
+                <div class="relative cursor-pointer" onclick="toggleCart()">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <span id="cart-count-mobile" class="absolute -top-2 -right-2 bg-gold text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center font-bold">0</span>
+                </div>
+                <button onclick="toggleMobileMenu()" class="focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-[60] hidden-menu p-10 flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-center mb-20">
+                <span class="text-xl font-bold tracking-widest uppercase">Empire</span>
+                <button onclick="toggleMobileMenu()">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-8 text-2xl luxury-font italic">
+                <a href="#" onclick="showPage('home'); toggleMobileMenu()">Home</a>
+                <a href="#" onclick="showPage('collections'); toggleMobileMenu()">Collections</a>
+                <a href="#" onclick="showPage('shop'); toggleMobileMenu()">Shop</a>
+                <a href="#" onclick="showPage('contact'); toggleMobileMenu()">Contact</a>
+            </nav>
+        </div>
+        <div class="text-[10px] uppercase tracking-widest text-gray-400 border-t pt-8">
+            <p class="mb-2">Savile Row, London</p>
+            <p>© 2024 Empire Menswear</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="app-content">
+        
+        <!-- HOMEPAGE SECTION -->
+        <section id="page-home" class="page-view">
+            <!-- Hero -->
+            <div class="relative h-[90vh] flex items-center justify-center bg-neutral-900 overflow-hidden">
+                <img src="assets/hero.png" class="absolute inset-0 w-full h-full object-cover opacity-70 scale-105 hover:scale-100 transition-all duration-[2000ms]" alt="Hero">
+                <div class="relative z-10 text-center text-white px-6">
+                    <h2 class="text-xs uppercase tracking-[0.6em] mb-6 font-light fade-in">The Autumn Winter 2024</h2>
+                    <h1 class="text-5xl md:text-8xl mb-10 leading-tight luxury-font italic">Defined by Elegance</h1>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <button onclick="showPage('collections')" class="bg-transparent border border-white text-white px-12 py-4 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all mt-4">Explore Collections</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Pieces -->
+            <div class="py-32 px-6 max-w-7xl mx-auto">
+                <div class="flex justify-between items-end mb-16 border-b pb-8">
+                    <div>
+                        <h4 class="text-gold text-[10px] uppercase tracking-[0.4em] mb-2">Latest Arrivals</h4>
+                        <h2 class="text-4xl luxury-font italic">New Pieces</h2>
+                    </div>
+                    <button onclick="showPage('shop')" class="text-[10px] uppercase tracking-widest hover:text-gold transition-colors">View All</button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+                    <div class="group cursor-pointer" onclick="viewProduct(1)">
+                        <div class="aspect-[3/4] mb-6 overflow-hidden bg-gray-800">
+                            <img src="assets/products/1.webp" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                        </div>
+                        <div>
+                            <p class="text-[8px] uppercase tracking-[0.4em] text-gold mb-1">Wedding</p>
+                            <h3 class="text-xs uppercase tracking-widest luxury-font italic mb-2">Ivory Peak Tuxedo</h3>
+                            <p class="text-[10px] font-light text-gray-300 tracking-widest">$1,250</p>
+                        </div>
+                    </div>
+                    <div class="group cursor-pointer hidden sm:block" onclick="viewProduct(2)">
+                        <div class="aspect-[3/4] mb-6 overflow-hidden bg-gray-800">
+                            <img src="assets/products/2.webp" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                        </div>
+                        <div>
+                            <p class="text-[8px] uppercase tracking-[0.4em] text-gold mb-1">Business</p>
+                            <h3 class="text-xs uppercase tracking-widest luxury-font italic mb-2">Midnight Navy 3-Piece</h3>
+                            <p class="text-[10px] font-light text-gray-300 tracking-widest">$980</p>
+                        </div>
+                    </div>
+                    <div class="group cursor-pointer hidden md:block" onclick="viewProduct(5)">
+                        <div class="aspect-[3/4] mb-6 overflow-hidden bg-gray-800">
+                            <img src="assets/products/5.webp" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                        </div>
+                        <div>
+                            <p class="text-[8px] uppercase tracking-[0.4em] text-gold mb-1">Wedding</p>
+                            <h3 class="text-xs uppercase tracking-widest luxury-font italic mb-2">Burgundy Velvet Jacket</h3>
+                            <p class="text-[10px] font-light text-gray-300 tracking-widest">$850</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Craftsmanship -->
+            <div class="bg-gray-800 py-32 px-6">
+                <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
+                    <div class="flex-1 w-full">
+                        <div class="relative aspect-[4/5] overflow-hidden">
+                            <img src="assets/images/precision.webp" class="absolute inset-0 w-full h-full object-cover" alt="Craftsmanship">
+                        </div>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h4 class="text-gold text-xs uppercase tracking-[0.4em] mb-8">The Craft</h4>
+                        <h2 class="text-4xl md:text-5xl mb-8 luxury-font italic">Precision in every stitch.</h2>
+                        <p class="text-gray-300 leading-loose text-lg font-light italic mb-10">
+                            Empire Menswear is born from the belief that true luxury is found in the details. 
+                            From the selection of the finest Italian wools to the final hand-finished buttonhole, 
+                            we craft garments for the man who understands that style is a silent language.
+                        </p>
+                        <button onclick="showPage('contact')" class="border border-black px-10 py-4 text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition-all">Book a Fitting</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lifestyle Banner -->
+            <div class="relative h-[60vh] md:h-[80vh] flex items-center justify-center bg-neutral-900 overflow-hidden">
+                <img src="assets/images/lifestyle.webp" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="Lifestyle">
+                <div class="relative z-10 text-center text-white px-6 max-w-3xl">
+                    <h2 class="text-4xl md:text-6xl mb-8 leading-tight luxury-font italic">"Elegance is not standing out, but being remembered."</h2>
+                    <button onclick="showPage('collections')" class="bg-transparent border border-white text-white px-12 py-4 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all mt-4">Discover The Lifestyle</button>
+                </div>
+            </div>
+
+            <!-- Signature Piece -->
+            <div class="py-32 px-6 max-w-7xl mx-auto">
+                <div class="flex flex-col-reverse md:flex-row items-center gap-16 md:gap-24">
+                    <div class="flex-1 text-center md:text-left">
+                        <h4 class="text-gold text-xs uppercase tracking-[0.4em] mb-6">Signature Piece</h4>
+                        <h2 class="text-4xl md:text-5xl mb-6 luxury-font italic">The Ivory Peak Tuxedo</h2>
+                        <p class="text-gray-300 leading-loose text-base font-light mb-10">
+                            Crafted from an exceptional wool-silk blend from the Biella region, this tuxedo features silk grosgrain lapels and a tailored waist for a commanding silhouette. A true testament to our dedication to the art of formalwear.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-8">
+                            <span class="text-xl luxury-font">$1,250</span>
+                            <button onclick="viewProduct(1)" class="bg-black text-white px-10 py-4 text-[10px] uppercase tracking-widest hover:bg-neutral-800 transition-all">View Details</button>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <div class="aspect-[3/4] overflow-hidden bg-gray-800 group cursor-pointer" onclick="viewProduct(1)">
+                            <img src="assets/images/father to son.webp" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Signature Piece">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand Values -->
+            <div class="py-24 px-6 bg-gray-800 border-t border-gray-600">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+                    <div>
+                        <div class="w-16 h-16 mx-auto border border-gold rounded-full flex items-center justify-center mb-6 text-gold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-lg luxury-font italic mb-4">Bespoke Tailoring</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">Garments crafted precisely to your measurements, ensuring a flawless and natural fit.</p>
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 mx-auto border border-gold rounded-full flex items-center justify-center mb-6 text-gold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <h3 class="text-lg luxury-font italic mb-4">Finest Materials</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">Sourcing only the most exquisite wools, silks, and linens from world-renowned mills.</p>
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 mx-auto border border-gold rounded-full flex items-center justify-center mb-6 text-gold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-lg luxury-font italic mb-4">Timeless Design</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">Silhouettes that outlast trends, defining modern elegance for generations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="bg-black py-32 px-6 text-center text-white">
+                <div class="max-w-2xl mx-auto">
+                    <h4 class="text-gold text-xs uppercase tracking-[0.4em] mb-6">The Atelier Club</h4>
+                    <h2 class="text-4xl md:text-5xl mb-8 luxury-font italic">Join our private circle.</h2>
+                    <p class="text-gray-300 font-light text-sm mb-12">Receive exclusive invitations to private fittings, seasonal collections, and sartorial insights directly to your inbox.</p>
+                    <form class="flex flex-col sm:flex-row gap-4 justify-center" onsubmit="event.preventDefault(); showMessage('Welcome to the Atelier Club.'); this.reset();">
+                        <input type="email" placeholder="EMAIL ADDRESS" class="bg-transparent border-b border-gray-600 py-4 px-2 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors flex-1 max-w-sm mx-auto sm:mx-0 text-center sm:text-left text-white" required>
+                        <button type="submit" class="bg-white text-black px-10 py-4 text-[10px] uppercase tracking-widest hover:bg-gold hover:text-white transition-all">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLLECTIONS PAGE -->
+        <section id="page-collections" class="page-view hidden">
+            <div class="py-24 px-6 text-center bg-gray-800 border-b">
+                <h4 class="text-gold text-[10px] uppercase tracking-[0.5em] mb-4">Curated Editorials</h4>
+                <h1 class="text-5xl md:text-7xl luxury-font italic">The Collections</h1>
+            </div>
+
+            <div class="space-y-0">
+                <!-- Wedding Editorial -->
+                <div class="group relative h-[80vh] w-full overflow-hidden flex items-center justify-center cursor-pointer" onclick="filterByCollection('Wedding')">
+                    <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?auto=format&fit=crop&q=80&w=1600" class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-[2s] group-hover:grayscale-0 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                    <div class="relative z-10 text-center text-white px-6">
+                        <h2 class="text-6xl md:text-8xl luxury-font italic mb-4">The Wedding Gallery</h2>
+                        <p class="text-sm uppercase tracking-[0.4em] font-light mb-8">For the ultimate milestone</p>
+                        <span class="inline-block border border-white px-10 py-4 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all">View Selection</span>
+                    </div>
+                </div>
+
+                <!-- Business Editorial -->
+                <div class="group relative h-[80vh] w-full overflow-hidden flex items-center justify-center cursor-pointer" onclick="filterByCollection('Business')">
+                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=1600" class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-[2s] group-hover:grayscale-0 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                    <div class="relative z-10 text-center text-white px-6">
+                        <h2 class="text-6xl md:text-8xl luxury-font italic mb-4">The Modern Executive</h2>
+                        <p class="text-sm uppercase tracking-[0.4em] font-light mb-8">Precision-cut for the boardroom</p>
+                        <span class="inline-block border border-white px-10 py-4 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all">View Selection</span>
+                    </div>
+                </div>
+
+                <!-- Casual Editorial -->
+                <div class="group relative h-[80vh] w-full overflow-hidden flex items-center justify-center cursor-pointer" onclick="filterByCollection('Casual')">
+                    <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?auto=format&fit=crop&q=80&w=1600" class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-[2s] group-hover:grayscale-0 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                    <div class="relative z-10 text-center text-white px-6">
+                        <h2 class="text-6xl md:text-8xl luxury-font italic mb-4">Luxury Casual</h2>
+                        <p class="text-sm uppercase tracking-[0.4em] font-light mb-8">Refined ease for the weekend</p>
+                        <span class="inline-block border border-white px-10 py-4 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all">View Selection</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SHOP SECTION (Product Grid) -->
+        <section id="page-shop" class="page-view hidden py-24 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
+                <!-- Sidebar -->
+                <aside class="w-full md:w-64 space-y-12 shrink-0">
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-widest mb-8 border-b pb-4">Browse</h4>
+                        <ul class="space-y-4 text-[10px] uppercase tracking-widest text-gray-300">
+                            <li><button onclick="filterByCollection('All')" class="hover:text-gold transition-colors">Full Gallery</button></li>
+                            <li><button onclick="filterByCollection('Wedding')" class="hover:text-gold transition-colors">Wedding</button></li>
+                            <li><button onclick="filterByCollection('Business')" class="hover:text-gold transition-colors">Business</button></li>
+                            <li><button onclick="filterByCollection('Casual')" class="hover:text-gold transition-colors">Casual</button></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Grid -->
+                <div class="flex-1">
+                    <div class="flex justify-between items-end mb-16 border-b pb-8">
+                        <div>
+                            <h4 id="shop-category" class="text-gold text-[10px] uppercase tracking-[0.4em] mb-2">Bespoke</h4>
+                            <h2 id="shop-title" class="text-4xl luxury-font italic">Our Full Gallery</h2>
+                        </div>
+                        <span id="product-count" class="text-[9px] uppercase tracking-widest text-gray-300">8 Items</span>
+                    </div>
+                    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
+                        <!-- Products injected here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCT DETAIL -->
+        <section id="page-product" class="page-view hidden py-24 px-6 bg-gray-900">
+            <div class="max-w-7xl mx-auto">
+                <button onclick="showPage('shop')" class="text-[10px] uppercase tracking-widest flex items-center mb-16 text-gray-300 hover:text-gold transition-colors">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg>
+                    Return to Selection
+                </button>
+                <div class="flex flex-col lg:flex-row gap-24">
+                    <div class="flex-1">
+                        <img id="p-detail-img" src="" class="w-full aspect-[4/5] object-cover bg-neutral-100 shadow-sm">
+                    </div>
+                    <div class="flex-1">
+                        <p id="p-detail-cat" class="text-gold text-[10px] uppercase tracking-[0.4em] mb-4"></p>
+                        <h1 id="p-detail-name" class="text-5xl luxury-font italic mb-6 leading-tight"></h1>
+                        <p id="p-detail-price" class="text-2xl font-light mb-12 text-gray-100"></p>
+                        
+                        <div class="space-y-8 mb-12">
+                            <div>
+                                <h4 class="text-[10px] uppercase tracking-widest font-bold mb-4">Selection</h4>
+                                <div class="flex gap-4">
+                                    <button onclick="selectSize('40R')" id="size-40R" class="size-btn px-6 py-4 border text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition-all">40R</button>
+                                    <button onclick="selectSize('42R')" id="size-42R" class="size-btn px-6 py-4 border text-[10px] uppercase tracking-widest bg-black text-white">42R</button>
+                                    <button onclick="selectSize('44R')" id="size-44R" class="size-btn px-6 py-4 border text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition-all">44R</button>
+                                </div>
+                            </div>
+                            <div class="pt-8 border-t">
+                                <h4 class="text-[10px] uppercase tracking-widest font-bold mb-4">The Craft</h4>
+                                <p id="p-detail-desc" class="text-gray-500 leading-relaxed font-light text-sm italic"></p>
+                            </div>
+                        </div>
+
+                        <button onclick="addToCart()" class="w-full bg-black text-white py-6 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all">
+                            Add to Shopping Bag
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHECKOUT -->
+        <section id="page-checkout" class="page-view hidden py-24 px-6 bg-gray-900">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl luxury-font italic mb-12 text-center">Secure Checkout</h1>
+                <div class="grid md:grid-cols-2 gap-16">
+                    <!-- Order Summary -->
+                    <div>
+                        <h2 class="text-xl luxury-font italic mb-8">Order Summary</h2>
+                        <div class="bg-gray-800 p-6 mb-8">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm">Items in Cart</span>
+                                <span id="checkout-items" class="text-sm">0</span>
+                            </div>
+                            <div id="checkout-cart-items" class="mb-4"></div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm">Subtotal</span>
+                                <span id="checkout-subtotal" class="text-sm">$0</span>
+                            </div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm">Shipping</span>
+                                <span class="text-sm">Free</span>
+                            </div>
+                            <hr class="border-gray-600 my-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold">Total</span>
+                                <span id="checkout-total" class="text-lg font-bold">$0</span>
+                            </div>
+                        </div>
+                        <button onclick="showPage('shop')" class="text-[10px] uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">← Continue Shopping</button>
+                    </div>
+                    <!-- Checkout Form -->
+                    <div>
+                        <form onsubmit="event.preventDefault(); completeOrder()">
+                            <h2 class="text-xl luxury-font italic mb-8">Shipping Information</h2>
+                            <div class="space-y-6 mb-12">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <input type="text" placeholder="FIRST NAME" class="bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                                    <input type="text" placeholder="LAST NAME" class="bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                                </div>
+                                <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                                <input type="text" placeholder="ADDRESS" class="w-full bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <input type="text" placeholder="CITY" class="bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                                    <input type="text" placeholder="POSTCODE" class="bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                                </div>
+                            </div>
+                            <h2 class="text-xl luxury-font italic mb-8">Payment Information</h2>
+                            <div class="space-y-6 mb-12">
+                                <input type="text" placeholder="CARD NUMBER" class="w-full bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <input type="text" placeholder="EXPIRY DATE (MM/YY)" class="bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                                    <input type="text" placeholder="CVV" class="bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                                </div>
+                                <input type="text" placeholder="CARDHOLDER NAME" class="w-full bg-transparent border-b border-gray-600 py-3 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                            </div>
+                            <button type="submit" class="w-full bg-black text-white py-6 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all">
+                                Complete Order
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="page-contact" class="page-view hidden py-32 px-6">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-24">
+                <div>
+                    <h2 class="text-5xl luxury-font italic mb-8">Personal Concierge</h2>
+                    <p class="text-gray-500 mb-12 italic">Whether you require a personal fitting or have questions regarding our materials, our tailors are here to guide you.</p>
+                    <div class="space-y-8 text-[10px] uppercase tracking-[0.3em] font-light">
+                        <p>12 Savile Row, Mayfair, London</p>
+                        <p>concierge@empiremenswear.com</p>
+                        <p>+44 (0) 20 7946 0888</p>
+                    </div>
+                </div>
+                <form class="space-y-10" onsubmit="event.preventDefault(); showMessage('Message Received. We will contact you shortly.')">
+                    <input type="text" placeholder="FULL NAME" class="w-full border-b border-neutral-300 py-4 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                    <input type="email" placeholder="EMAIL ADDRESS" class="w-full border-b border-neutral-300 py-4 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors" required>
+                    <textarea placeholder="HOW CAN WE ASSIST?" rows="4" class="w-full border-b border-neutral-300 py-4 text-[10px] uppercase tracking-widest outline-none focus:border-gold transition-colors"></textarea>
+                    <button class="bg-black text-white px-12 py-5 text-[10px] uppercase tracking-widest hover:bg-neutral-800">Send Inquiry</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-600 pt-32 pb-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-16 mb-24">
+                <div class="col-span-2 md:col-span-1">
+                    <img src="assets/logo2.png" alt="Empire Logo" class="h-10 w-auto mb-6" onerror="this.outerHTML='<span class=\'luxury-font text-xl font-bold tracking-[0.2em] uppercase mb-8\'>EMPIRE</span>'">
+                    <p class="text-[9px] text-gray-400 uppercase tracking-widest leading-loose">Established 1984. Purveyors of fine Italian tailoring and bespoke menswear.</p>
+                </div>
+                <div>
+                    <h4 class="text-[9px] font-bold uppercase tracking-widest mb-8">Navigation</h4>
+                    <ul class="text-[9px] space-y-4 text-gray-500 uppercase tracking-widest">
+                        <li><a href="#" onclick="showPage('collections')" class="hover:text-gold">Collections</a></li>
+                        <li><a href="#" onclick="showPage('shop')" class="hover:text-gold">The Shop</a></li>
+                        <li><a href="#" onclick="showPage('contact')" class="hover:text-gold">Appointments</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[9px] font-bold uppercase tracking-widest mb-8">Social</h4>
+                    <ul class="text-[9px] space-y-4 text-gray-500 uppercase tracking-widest">
+                        <li><a href="#" class="hover:text-gold">Instagram</a></li>
+                        <li><a href="#" class="hover:text-gold">Journal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[9px] font-bold uppercase tracking-widest mb-8">Join the Atelier</h4>
+                    <div class="flex border-b border-black pb-2">
+                        <input type="email" placeholder="EMAIL" class="bg-transparent text-[9px] outline-none flex-grow uppercase tracking-widest">
+                        <button class="text-[9px] font-bold">SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div id="notification" class="fixed bottom-12 right-12 bg-black text-white px-10 py-5 text-[10px] uppercase tracking-widest opacity-0 transition-opacity z-[999] shadow-2xl pointer-events-none">
+    </div>
+
+    <script>
+const products = [
+    { id: 1, name: "Ivory Peak Tuxedo", price: 1250, cat: "Wedding", img: "assets/products/1.webp", desc: "Crafted from an exceptional wool-silk blend from the Biella region, this tuxedo features silk grosgrain lapels and a tailored waist for a commanding silhouette." },
+    { id: 2, name: "Midnight Navy 3-Piece", price: 980, cat: "Business", img: "assets/products/2.webp", desc: "A staple for the modern executive. This navy three-piece is half-canvassed for a natural drape that improves with every wear." },
+    { id: 3, name: "Double Breasted Onyx", price: 1100, cat: "Wedding", img: "assets/products/3.webp", desc: "The height of formal authority. Our double-breasted tuxedo features peak lapels and a structured shoulder for a timeless aesthetic." },
+    { id: 4, name: "Desert Linen Blazer", price: 450, cat: "Business", img: "assets/products/4.webp", desc: "Designed for leisure without sacrifice. This unlined blazer is cut from pure Italian linen for breathable elegance." },
+    { id: 5, name: "Burgundy Velvet Jacket", price: 850, cat: "Wedding", img: "assets/products/5.webp", desc: "A statement of luxury. Sumptuous deep-pile velvet paired with classic satin trim for the ultimate evening look." },
+    { id: 6, name: "Glen Plaid Business Suit", price: 920, cat: "Business", img: "assets/products/6.webp", desc: "Heritage meets modern fit. This Prince of Wales check is realized in a 130s superfine wool for exceptional comfort." },
+    { id: 7, name: "Pinstripe Authority", price: 890, cat: "Business", img: "assets/products/7.webp", desc: "A nod to classic financial district tailoring. The pinstripe is subtle, emphasizing the vertical lines of the cut." },
+    { id: 8, name: "Hand-Stitched Safari", price: 550, cat: "Casual", img: "assets/products/casuals/1.webp", desc: "The quintessential travel layer. Utilitarian pockets meet a refined tailored shoulder in this premium cotton-twill jacket." },
+    { id: 9, name: "Hand-Stitched Safari", price: 550, cat: "Casual", img: "assets/products/casuals/2.webp", desc: "The quintessential travel layer. Utilitarian pockets meet a refined tailored shoulder in this premium cotton-twill jacket." },
+    { id: 10, name: "Hand-Stitched Safari", price: 550, cat: "Casual", img: "assets/products/casuals/3.webp", desc: "The quintessential travel layer. Utilitarian pockets meet a refined tailored shoulder in this premium cotton-twill jacket." },
+    { id: 11, name: "Hand-Stitched Safari", price: 550, cat: "Casual", img: "assets/products/casuals/4.webp", desc: "The quintessential travel layer. Utilitarian pockets meet a refined tailored shoulder in this premium cotton-twill jacket." },
+];
+
+let cartCount = 0;
+let currentPage = 1;
+let itemsPerPage = 12;
+let filteredProducts = [];
+let selectedSize = '42R';
+let cart = [];
+let currentProduct = null;
+
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden-menu');
+}
+
+function showPage(pageId) {
+    document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
+    const target = document.getElementById('page-' + pageId);
+    if(target) {
+        target.classList.remove('hidden');
+        target.classList.add('fade-in');
+    }
+    window.scrollTo(0,0);
+
+    // FIX: Safely initialize the shop page items without causing infinite recursion
+    if (pageId === 'shop' && filteredProducts.length === 0) {
+        loadCollectionData('All');
+    }
+    if (pageId === 'checkout') {
+        updateCheckoutSummary();
+    }
+}
+
+// FIX: Seperated the action of navigating from loading the data
+function filterByCollection(cat) {
+    showPage('shop'); 
+    loadCollectionData(cat); 
+}
+
+// FIX: Independent data handler that never calls navigation methods
+function loadCollectionData(cat) {
+    currentPage = 1;
+    filteredProducts = cat === 'All' ? products : products.filter(p => p.cat === cat);
+    document.getElementById('shop-title').innerText = cat === 'All' ? 'Our Full Gallery' : 'The ' + cat + ' Collection';
+    document.getElementById('shop-category').innerText = cat === 'All' ? 'All Pieces' : cat;
+    document.getElementById('product-count').innerText = filteredProducts.length + ' Items';
+    
+    renderProducts();
+}
+
+function renderProducts() {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const productsToShow = filteredProducts.slice(startIndex, endIndex);
+    
+    const grid = document.getElementById('product-grid');
+    grid.innerHTML = productsToShow.map(p => `
+        <div class="group cursor-pointer" onclick="viewProduct(${p.id})">
+            <div class="aspect-[3/4] mb-6 overflow-hidden bg-neutral-100">
+                <img src="${p.img}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+            </div>
+            <div>
+                <p class="text-[8px] uppercase tracking-[0.4em] text-gold mb-1">${p.cat}</p>
+                <h3 class="text-xs uppercase tracking-widest luxury-font italic mb-2">${p.name}</h3>
+                <p class="text-[10px] font-light text-gray-500 tracking-widest">$${p.price.toLocaleString()}</p>
+            </div>
+        </div>
+    `).join('');
+    
+    // Add View More button if needed
+    if(filteredProducts.length > endIndex) {
+        grid.innerHTML += `
+            <div class="col-span-full flex justify-center mt-16">
+                <button onclick="loadMoreProducts()" class="bg-black text-white px-12 py-4 text-[10px] uppercase tracking-widest hover:bg-neutral-800 transition-all">
+                    View More
+                </button>
+            </div>
+        `;
+    }
+}
+
+function loadMoreProducts() {
+    currentPage++;
+    renderProducts();
+}
+
+function viewProduct(id) {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+    currentProduct = product;
+    document.getElementById('p-detail-img').src = product.img;
+    document.getElementById('p-detail-name').innerText = product.name;
+    document.getElementById('p-detail-cat').innerText = product.cat;
+    document.getElementById('p-detail-price').innerText = `$${product.price.toLocaleString()}`;
+    document.getElementById('p-detail-desc').innerText = product.desc;
+    selectedSize = '42R'; // Reset to default size
+    selectSize('42R'); // Update button visuals
+    showPage('product');
+}
+
+/*************  ✨ Windsurf Command ⭐  *************/
+/**
+ * Increment the cart count and update the UI with the new count.
+ * Also show a notification with a success message.
+ */
+/*******  ad1f6a8a-0012-4bac-9222-b1ed020eaf42  *******/    
+function addToCart() {
+    if (currentProduct) {
+        cart.push({ ...currentProduct, size: selectedSize });
+        cartCount = cart.length;
+        document.getElementById('cart-count').innerText = cartCount;
+        document.getElementById('cart-count-mobile').innerText = cartCount;
+        showMessage("Size " + selectedSize + " added to Shopping Bag");
+    }
+}
+
+function completeOrder() {
+    showMessage("Order completed successfully! Thank you for your purchase.");
+    cart = [];
+    cartCount = 0;
+    document.getElementById('cart-count').innerText = cartCount;
+    document.getElementById('cart-count-mobile').innerText = cartCount;
+    showPage('home');
+}
+
+function updateCheckoutSummary() {
+    const itemsEl = document.getElementById('checkout-items');
+    const subtotalEl = document.getElementById('checkout-subtotal');
+    const totalEl = document.getElementById('checkout-total');
+    
+    itemsEl.innerText = cart.length;
+    
+    let subtotal = 0;
+    cart.forEach(item => {
+        subtotal += item.price;
+    });
+    
+    subtotalEl.innerText = `$${subtotal.toLocaleString()}`;
+    totalEl.innerText = `$${subtotal.toLocaleString()}`;
+    
+    // Optionally, list the items
+    const cartItemsEl = document.getElementById('checkout-cart-items');
+    if (cartItemsEl) {
+        cartItemsEl.innerHTML = cart.map(item => `
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm">${item.name} (${item.size})</span>
+                <span class="text-sm">$${item.price.toLocaleString()}</span>
+            </div>
+        `).join('');
+    }
+}
+
+function toggleCart() {
+    showPage('checkout');
+}
+
+function showMessage(msg) {
+    const el = document.getElementById('notification');
+    el.innerText = msg;
+    el.style.opacity = '1';
+    setTimeout(() => { el.style.opacity = '0'; }, 3000);
+}
+
+function selectSize(size) {
+    selectedSize = size;
+    // Remove selected class from all size buttons
+    document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.classList.remove('bg-black', 'text-white');
+        btn.classList.add('hover:bg-black', 'hover:text-white');
+    });
+    // Add selected class to the clicked button
+    const selectedBtn = document.getElementById('size-' + size);
+    selectedBtn.classList.add('bg-black', 'text-white');
+    selectedBtn.classList.remove('hover:bg-black', 'hover:text-white');
+}
+
+window.onload = () => {
+    showPage('home');
+};
+    </script>
+</body>
+</html>
