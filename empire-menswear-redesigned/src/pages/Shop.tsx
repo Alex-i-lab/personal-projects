@@ -5,6 +5,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { PRODUCTS, CATEGORIES, SIZES, GENDERS, OCCASIONS, FITS, STYLES } from '../constants';
 import { useAppContext } from '../context/AppContext';
+import { getOptimizedUrl, IMAGE_SIZES } from '../utils/cloudinary';
 
 const Shop: React.FC = () => {
   const { addToCart, setSelectedProductForReviews, setQuickViewProduct, formatPrice, products, isLoadingProducts, toggleWishlist, isInWishlist } = useAppContext();
@@ -107,6 +108,7 @@ const Shop: React.FC = () => {
         <title>Shop All | Empire Menswear Luxury Menswear</title>
         <meta name="description" content="Browse our full collection of luxury menswear. From tailored formal wear to refined casual pieces, find the perfect addition to your sartorial wardrobe." />
         <link rel="canonical" href="https://empire-menswear.luxury/shop" />
+        <link rel="preconnect" href="https://res.cloudinary.com" />
       </Helmet>
       {/* HEADER */}
       <div className="space-y-4 max-w-2xl">
@@ -173,8 +175,16 @@ const Shop: React.FC = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden bg-white rounded-[32px] border border-black/5 shadow-xl"
+            className="overflow-hidden bg-white rounded-[32px] border border-black/5 shadow-xl relative"
           >
+            {/* Close Button at top right */}
+            <button 
+              onClick={() => setIsFilterOpen(false)}
+              className="absolute top-6 right-6 p-2 rounded-full hover:bg-black/5 transition-colors z-10"
+              title="Close Filters"
+            >
+              <X size={20} />
+            </button>
             <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
               <div className="space-y-6">
                 <h4 className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#AAAAAA]">Category</h4>
@@ -335,13 +345,21 @@ const Shop: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="px-8 py-4 bg-[#F9F9F9] border-t border-black/5 flex justify-between items-center">
-              <p className="text-[11px] text-[#AAAAAA] uppercase tracking-widest">Showing {filteredProducts.length} results</p>
+            <div className="px-8 py-6 bg-[#F9F9F9] border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+                <p className="text-[11px] text-[#AAAAAA] uppercase tracking-widest">Showing {filteredProducts.length} results</p>
+                <button 
+                  onClick={clearFilters}
+                  className="text-[11px] uppercase tracking-widest font-bold hover:opacity-60 transition-opacity"
+                >
+                  Reset All
+                </button>
+              </div>
               <button 
-                onClick={clearFilters}
-                className="text-[11px] uppercase tracking-widest font-bold hover:opacity-60 transition-opacity"
+                onClick={() => setIsFilterOpen(false)}
+                className="w-full sm:w-auto bg-black text-white px-10 py-4 rounded-full text-[12px] uppercase tracking-[0.2em] font-bold hover:bg-gold transition-all shadow-lg"
               >
-                Reset All
+                Apply Filters & Close
               </button>
             </div>
           </motion.div>
@@ -384,7 +402,7 @@ const Shop: React.FC = () => {
                 <div className="relative aspect-[3/4] overflow-hidden bg-[#F5F5F5] rounded-[24px]">
                   <Link to={`/product/${product.id}`}>
                     <img 
-                      src={product.img} 
+                      src={getOptimizedUrl(product.img, { width: IMAGE_SIZES.PRODUCT_CARD })} 
                       alt={product.title} 
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"

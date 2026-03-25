@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Star, ChevronLeft, ChevronRight, ShoppingBag, ArrowLeft, CheckCircle2, ChevronDown, Ruler, Heart } from "lucide-react";
 import { PRODUCTS, SIZES } from '../constants';
 import { useAppContext } from '../context/AppContext';
+import { getOptimizedUrl, IMAGE_SIZES } from '../utils/cloudinary';
 
 const SIZE_GUIDES: Record<string, { headers: string[], rows: string[][] }> = {
   "Knitwear": {
@@ -200,10 +201,11 @@ const ProductDetail: React.FC = () => {
                 className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
               >
                 <img 
-                  src={product.images ? product.images[currentImageIndex] : product.img} 
+                  src={getOptimizedUrl(product.images ? product.images[currentImageIndex] : product.img, { width: IMAGE_SIZES.PRODUCT_DETAIL })} 
                   alt={product.title} 
                   className="w-full h-full object-cover pointer-events-none"
                   referrerPolicy="no-referrer"
+                  fetchPriority="high"
                 />
               </motion.div>
             </AnimatePresence>
@@ -252,7 +254,7 @@ const ProductDetail: React.FC = () => {
                   }}
                   className={`relative flex-shrink-0 w-24 aspect-[4/5] rounded-xl overflow-hidden border-2 transition-all ${idx === currentImageIndex ? 'border-black' : 'border-transparent opacity-60 hover:opacity-100'}`}
                 >
-                  <img src={img} alt={`${product.title} view ${idx + 1}`} loading="lazy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src={getOptimizedUrl(img, { width: IMAGE_SIZES.THUMBNAIL })} alt={`${product.title} view ${idx + 1}`} loading="lazy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </button>
               ))}
             </div>
@@ -448,7 +450,7 @@ const ProductDetail: React.FC = () => {
                 >
                   <div className="relative aspect-[3/4] overflow-hidden bg-[#F5F5F5] rounded-[24px]">
                     <img 
-                      src={item.img} 
+                      src={getOptimizedUrl(item.img, { width: IMAGE_SIZES.PRODUCT_CARD })} 
                       alt={item.title} 
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"

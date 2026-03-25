@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { PRODUCTS } from '../constants';
 import { useAppContext } from '../context/AppContext';
+import { getOptimizedUrl, IMAGE_SIZES } from '../utils/cloudinary';
 
 const Home: React.FC = () => {
   const { addToCart, setSelectedProductForReviews, setQuickViewProduct, formatPrice, products, isLoadingProducts, toggleWishlist, isInWishlist } = useAppContext();
@@ -15,15 +16,22 @@ const Home: React.FC = () => {
         <title>Empire Menswear | Luxury Menswear & Sartorial Excellence</title>
         <meta name="description" content="Discover Empire Menswear, the pinnacle of luxury menswear. Explore our collection of premium knitwear, outerwear, and bespoke tailoring handcrafted in Milan." />
         <link rel="canonical" href="https://empire-menswear.luxury/" />
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link 
+          rel="preload" 
+          as="image" 
+          href={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306147/hero_ynvxcc.png", { width: IMAGE_SIZES.HERO })} 
+        />
       </Helmet>
       {/* HERO SECTION */}
       <section className="relative h-screen min-h-[600px] md:h-[90vh] lg:h-screen overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 z-10" />
         <img 
-          src="https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306147/hero_ynvxcc.png" 
+          src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306147/hero_ynvxcc.png", { width: IMAGE_SIZES.HERO })} 
           alt="Empire Menswear Hero" 
           className="absolute inset-0 w-full h-full object-cover animate-slow-zoom"
           referrerPolicy="no-referrer"
+          fetchPriority="high"
         />
         <div className="relative z-20 h-full flex flex-col items-center justify-center text-white px-6 text-center">
           <motion.div
@@ -102,7 +110,7 @@ const Home: React.FC = () => {
                 <div className="relative aspect-[3/4] overflow-hidden bg-[#F5F5F5] rounded-[20px]">
                   <Link to={`/product/${product.id}`}>
                     <img 
-                      src={product.img} 
+                      src={getOptimizedUrl(product.img, { width: IMAGE_SIZES.PRODUCT_CARD })} 
                       alt={product.title} 
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -176,7 +184,7 @@ const Home: React.FC = () => {
       <section id="bespoke" className="px-4 sm:px-16">
         <div className="relative min-h-[600px] h-[80vh] md:h-[70vh] lg:h-[80vh] rounded-[30px] sm:rounded-[40px] overflow-hidden group">
           <img 
-            src="https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306538/lifestyle_noz9n3.webp" 
+            src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306538/lifestyle_noz9n3.webp", { width: IMAGE_SIZES.PRODUCT_DETAIL })} 
             alt="Bespoke Tailoring" 
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
@@ -255,12 +263,12 @@ const Home: React.FC = () => {
           </div>
           <div className="lg:w-1/2 grid grid-cols-2 gap-6">
             <div className="space-y-6 pt-12">
-              <img src="https://res.cloudinary.com/dcy26s9jm/image/upload/v1774439653/IMG_7724_1_ocyi76.webp" alt="Atelier Craftsmanship" loading="lazy" className="rounded-[30px] w-full aspect-[3/4] object-cover shadow-2xl" referrerPolicy="no-referrer" />
-              <img src="https://res.cloudinary.com/dcy26s9jm/image/upload/v1774353818/precision_nqzrr3.webp" alt="Precision Tailoring" loading="lazy" className="rounded-[30px] w-full aspect-[3/4] object-cover shadow-xl" referrerPolicy="no-referrer" />
+              <img src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774439653/IMG_7724_1_ocyi76.webp", { width: IMAGE_SIZES.PRODUCT_CARD })} alt="Atelier Craftsmanship" loading="lazy" className="rounded-[30px] w-full aspect-[3/4] object-cover shadow-2xl" referrerPolicy="no-referrer" />
+              <img src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774353818/precision_nqzrr3.webp", { width: IMAGE_SIZES.PRODUCT_CARD })} alt="Precision Tailoring" loading="lazy" className="rounded-[30px] w-full aspect-[3/4] object-cover shadow-xl" referrerPolicy="no-referrer" />
             </div>
             <div className="space-y-6">
-              <img src="https://res.cloudinary.com/dcy26s9jm/image/upload/v1774353816/father_to_son_xtcsef.webp" alt="Legacy of Excellence" loading="lazy" className="rounded-[30px] w-full aspect-[3/4] object-cover shadow-xl" referrerPolicy="no-referrer" />
-              <img src="https://res.cloudinary.com/dcy26s9jm/image/upload/v1774439769/8_1_fkl1wg.webp" alt="Master Artisan" loading="lazy" className="rounded-[30px] w-full aspect-[3/4] object-cover shadow-2xl" referrerPolicy="no-referrer" />
+              <img src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774353816/father_to_son_xtcsef.webp", { width: IMAGE_SIZES.PRODUCT_CARD })} alt="Legacy of Excellence" loading="lazy" className="rounded-[30px] w-full aspect-[3/4] object-cover shadow-xl" referrerPolicy="no-referrer" />
+              <img src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774439769/8_1_fkl1wg.webp", { width: IMAGE_SIZES.PRODUCT_CARD })} alt="Master Artisan" loading="lazy" className="rounded-[30px] w-full aspect-[3/4] object-cover shadow-2xl" referrerPolicy="no-referrer" />
             </div>
           </div>
         </div>

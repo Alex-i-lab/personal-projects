@@ -6,6 +6,7 @@ import { useAppContext } from '../context/AppContext';
 import { SIZES } from '../constants';
 import SearchOverlay from './SearchOverlay';
 import Chatbot from './Chatbot';
+import { getOptimizedUrl, IMAGE_SIZES } from '../utils/cloudinary';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const {
@@ -286,7 +287,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               initial={{ opacity: 0, scale: 0.9, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 40 }}
-              className="fixed inset-0 m-auto w-[95%] max-w-4xl h-fit max-h-[90vh] bg-white z-[160] rounded-[32px] overflow-hidden flex flex-col md:flex-row shadow-2xl"
+              className="fixed inset-0 m-auto w-[95%] max-w-4xl h-fit max-h-[90vh] bg-white z-[160] rounded-[40px] overflow-hidden flex flex-col md:flex-row shadow-2xl"
             >
               <button 
                 onClick={() => setQuickViewProduct(null)}
@@ -295,7 +296,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <X size={20} />
               </button>
 
-              <div className="w-full md:w-1/2 aspect-[4/5] md:aspect-auto bg-[#F5F5F5] relative group/slider">
+              <div className="w-full md:w-1/2 h-[350px] md:h-auto md:aspect-auto bg-[#F5F5F5] relative group/slider flex-shrink-0">
                 <AnimatePresence initial={false} custom={direction}>
                   <motion.div
                     key={page}
@@ -323,7 +324,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                     className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
                   >
                     <img 
-                      src={quickViewProduct.images ? quickViewProduct.images[currentImageIndex] : quickViewProduct.img} 
+                      src={getOptimizedUrl(quickViewProduct.images ? quickViewProduct.images[currentImageIndex] : quickViewProduct.img, { width: IMAGE_SIZES.PRODUCT_DETAIL })} 
                       alt={quickViewProduct.title} 
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -368,9 +369,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 )}
               </div>
 
-              <div className="w-full md:w-1/2 p-8 sm:p-12 flex flex-col justify-center space-y-8 overflow-y-auto">
-                <div className="space-y-4">
-                  <div className="flex justify-between items-start">
+              <div className="w-full md:w-1/2 p-8 sm:p-12 flex flex-col items-start justify-start space-y-8 overflow-y-auto max-h-screen">
+                <div className="space-y-4 w-full pt-4 md:pt-0">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
                     <div>
                       <p className="text-[11px] text-[#AAAAAA] uppercase tracking-[0.4em] mb-2">{quickViewProduct.category}</p>
                       <h3 className="font-serif text-3xl sm:text-4xl uppercase tracking-tight leading-tight">{quickViewProduct.title}</h3>
@@ -420,12 +421,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
                 <div className="space-y-4">
                   <h4 className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#AAAAAA]">Select Size</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {SIZES[quickViewProduct.category]?.map((size) => (
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
+                    {SIZES[quickViewProduct.category]?.map((size: string) => (
                       <button
                         key={size}
                         onClick={() => setSelectedSize(size)}
-                        className={`w-12 h-12 rounded-full border text-xs font-medium transition-all flex items-center justify-center ${selectedSize === size ? 'bg-black text-white border-black' : 'border-black/10 hover:border-black'}`}
+                        className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border text-xs font-bold transition-all flex items-center justify-center ${selectedSize === size ? 'bg-black text-white border-gold shadow-lg' : 'border-black/5 hover:border-gold'}`}
                       >
                         {size}
                       </button>
@@ -441,7 +442,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                         setQuickViewProduct(null);
                       }
                     }}
-                    className="flex-1 bg-gold text-white py-5 rounded-full text-[13px] uppercase tracking-[0.2em] font-bold hover:bg-gold-dark transition-all shadow-xl"
+                    className="flex-1 bg-gold text-white py-5 rounded-full text-[11px] sm:text-[13px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-bold hover:bg-gold-dark transition-all shadow-xl truncate px-4"
                   >
                     Add to Cart
                   </button>
@@ -452,11 +453,11 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                     <ShoppingBag size={20} />
                   </button>
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center pt-4">
                   <Link 
                     to={`/product/${quickViewProduct.id}`}
                     onClick={() => setQuickViewProduct(null)}
-                    className="text-[11px] uppercase tracking-[0.3em] font-bold border-b border-black/10 pb-1 hover:border-black transition-all"
+                    className="text-[11px] uppercase tracking-[0.3em] font-bold border-b border-black/10 pb-1 hover:border-black hover:text-gold transition-all"
                   >
                     View Full Details
                   </Link>
