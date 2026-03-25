@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AppProvider } from './context/AppContext';
 import { Layout } from './components/Layout';
 import ScrollToAnchor from './components/ScrollToAnchor';
@@ -23,6 +24,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </Layout>
+          <SpeedInsights />
         </Router>
       </AppProvider>
     </ErrorBoundary>
