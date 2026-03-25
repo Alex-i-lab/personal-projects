@@ -3,7 +3,6 @@ import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Send, Instagram, Linkedin, Twitter, Clock, Loader2 } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
 import { useSearchParams } from 'react-router-dom';
-import { submitContactForm } from '../lib/firebase';
 
 const Contact: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -27,7 +26,12 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await submitContactForm(formState);
+      // Firebase removal: Simulating form submission
+      console.log("Simulating contact form submission:", formState);
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       setIsSubmitted(true);
       setTimeout(() => setIsSubmitted(false), 5000);
       setFormState({ name: '', email: '', subject: 'General Inquiry', message: '' });

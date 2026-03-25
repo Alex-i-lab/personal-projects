@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from "motion/react";
 import { User, ShoppingBag, LogOut, ChevronRight, Package, Clock, CheckCircle, Truck, XCircle, MapPin, Mail, Calendar } from "lucide-react";
 import { useAppContext } from '../context/AppContext';
-import { getUserOrders } from '../lib/firebase';
+// Firebase import removed
 
 const Account: React.FC = () => {
   const { formatPrice, currency } = useAppContext();

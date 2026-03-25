@@ -4,8 +4,7 @@ import * as codes from 'currency-codes';
 import Cookies from 'js-cookie';
 import { fetchProducts } from '../services/sanityService';
 import { isSanityConfigured } from '../lib/sanity';
-import { createOrder, getProductReviews, submitReview, db } from '../lib/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+// Firebase imports removed
 
 export interface Currency {
   code: string;
@@ -104,29 +103,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, []);
 
   const placeOrder = async (shippingAddress: any) => {
-    const orderData = {
-      items: cart.map(item => ({
-        title: item.title,
-        price: item.price,
-        size: item.size,
-        quantity: item.quantity,
-        img: item.images?.[0] || item.img
-      })),
+    // Firebase removal: Simulating successful order placement
+    console.log("Simulating order placement with address:", shippingAddress);
+    
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const mockOrder = {
+      orderId: Math.random().toString(36).substr(2, 9).toUpperCase(),
+      items: cart,
       total: cartTotal,
       currency: currency.code,
       shippingAddress,
+      status: 'pending',
+      createdAt: { seconds: Math.floor(Date.now() / 1000) }
     };
-
-    try {
-      // For now, we'll use a guest ID or anonymous ID if we wanted, 
-      // but since auth is removed, we'll just use 'guest'
-      const order = await createOrder('guest', orderData);
-      clearCart();
-      return order;
-    } catch (error) {
-      console.error("Order placement failed:", error);
-      throw error;
-    }
+    
+    clearCart();
+    return mockOrder;
   };
 
   const toggleWishlist = (product: any) => {
@@ -143,21 +137,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return wishlist.some(item => item.title === title);
   };
   
-  // Review handling
+  // Review handling - Firebase removal: using static reviews from constants
   useEffect(() => {
     if (selectedProductForReviews) {
-      const loadReviews = async () => {
-        setIsLoadingReviews(true);
-        try {
-          const productReviews = await getProductReviews(selectedProductForReviews.id);
-          setReviews(productReviews);
-        } catch (error) {
-          console.error("Failed to load reviews:", error);
-        } finally {
-          setIsLoadingReviews(false);
-        }
-      };
-      loadReviews();
+      setReviews(selectedProductForReviews.reviews || []);
     } else {
       setReviews([]);
     }
@@ -166,24 +149,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const addReview = async (rating: number, comment: string) => {
     if (!selectedProductForReviews) return;
 
-    const reviewData = {
-      productId: selectedProductForReviews.id,
-      userId: 'guest',
-      userName: 'Anonymous',
-      userPhoto: '',
+    // Firebase removal: Simulating review submission
+    console.log("Simulating review submission:", { rating, comment });
+    
+    const newReview = {
+      user: 'Anonymous',
       rating,
-      comment,
+      text: comment
     };
 
-    try {
-      await submitReview(reviewData);
-      // Refresh reviews
-      const productReviews = await getProductReviews(selectedProductForReviews.id);
-      setReviews(productReviews);
-    } catch (error) {
-      console.error("Failed to submit review:", error);
-      throw error;
-    }
+    setReviews(prev => [newReview, ...prev]);
+    
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 800));
   };
 
   // Fetch products from Sanity if configured
