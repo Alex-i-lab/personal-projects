@@ -1,0 +1,103 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Information about a registered user.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique identifier for the user." },
+        "email": { "type": "string", "format": "email", "description": "Email address of the user." },
+        "displayName": { "type": "string", "description": "Display name of the user." },
+        "photoURL": { "type": "string", "format": "uri", "description": "URL to the user's profile photo." },
+        "preferredCurrency": { "type": "string", "description": "Preferred currency code for the user." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp when the user account was created." },
+        "lastLogin": { "type": "string", "format": "date-time", "description": "Timestamp of the user's last login." }
+      },
+      "required": ["uid", "email"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Details of a purchase made by a user.",
+      "type": "object",
+      "properties": {
+        "orderId": { "type": "string", "description": "Unique identifier for the order." },
+        "userId": { "type": "string", "description": "ID of the user who placed the order." },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "productId": { "type": "string" },
+              "title": { "type": "string" },
+              "quantity": { "type": "number" },
+              "price": { "type": "number" },
+              "img": { "type": "string" }
+            }
+          }
+        },
+        "total": { "type": "number", "description": "Total amount of the order." },
+        "currency": { "type": "string", "description": "Currency code." },
+        "status": { "type": "string", "enum": ["pending", "processing", "shipped", "delivered", "cancelled"], "description": "Current status of the order." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp when the order was placed." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp when the order was last updated." },
+        "shippingAddress": {
+          "type": "object",
+          "properties": {
+            "fullName": { "type": "string" },
+            "addressLine1": { "type": "string" },
+            "city": { "type": "string" },
+            "postalCode": { "type": "string" },
+            "country": { "type": "string" }
+          }
+        }
+      },
+      "required": ["orderId", "userId", "items", "total", "currency", "status", "createdAt", "updatedAt", "shippingAddress"]
+    },
+    "Contact": {
+      "title": "Contact Message",
+      "description": "A message sent via the contact form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "subject", "message", "createdAt"]
+    },
+    "Review": {
+      "title": "Product Review",
+      "description": "A review for a product.",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhoto": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["productId", "userId", "userName", "rating", "comment", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Collection of user profile documents."
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of order documents."
+    },
+    "/contacts/{contactId}": {
+      "schema": "Contact",
+      "description": "Collection of contact form submissions."
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Collection of product reviews."
+    }
+  }
+}
