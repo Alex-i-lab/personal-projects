@@ -19,5 +19,6 @@ export const isSanityConfigured = !!sanityClient;
 const builder = sanityClient ? imageUrlBuilder(sanityClient) : null;
 
 export function urlFor(source: any) {
-  return builder ? builder.image(source) : { url: () => '' };
+  if (!builder || !source) return { url: () => '' };
+  return builder.image(source);
 }

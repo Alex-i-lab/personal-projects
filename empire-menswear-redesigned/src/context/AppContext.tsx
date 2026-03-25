@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import { PRODUCTS, ITEMS_PER_PAGE } from '../constants';
 import * as codes from 'currency-codes';
-import * as Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 import { fetchProducts } from '../services/sanityService';
 import { isSanityConfigured } from '../lib/sanity';
 import { createOrder, getProductReviews, submitReview, db } from '../lib/firebase';
@@ -57,6 +57,9 @@ interface AppContextType {
   wishlist: any[];
   toggleWishlist: (product: any) => void;
   isInWishlist: (title: string) => boolean;
+  reviews: any[];
+  isLoadingReviews: boolean;
+  addReview: (rating: number, comment: string) => Promise<void>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);

@@ -5,7 +5,7 @@ import { useAppContext } from '../context/AppContext';
 import { getUserOrders } from '../lib/firebase';
 
 const Account: React.FC = () => {
-  const { isAuthReady, formatPrice, currency } = useAppContext();
+  const { formatPrice, currency } = useAppContext();
   const [orders, setOrders] = useState<any[]>([]);
   const [isLoadingOrders, setIsLoadingOrders] = useState(false);
   const [activeTab, setActiveTab] = useState<'profile' | 'orders'>('profile');
@@ -14,14 +14,6 @@ const Account: React.FC = () => {
     // Fetching orders for guest is disabled or could be done via email
     setOrders([]);
   }, []);
-
-  if (!isAuthReady) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-gold border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
 
   // Login screen removed
 
