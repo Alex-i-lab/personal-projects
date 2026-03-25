@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaByte | Brand Identity Case Study</title>
+    
+    <!-- Google Fonts: Poppins (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        nova: {
+                            red: '#E81F4A',
+                            navy: '#16324F',
+                            black: '#0A0A0A',
+                            gray: '#F8FAFC',
+                            white: '#FFFFFF',
+                        }
+                    },
+                    letterSpacing: {
+                        tightest: '-.075em',
+                        widest: '.25em',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { background-color: #FFFFFF; color: #16324F; overflow-x: hidden; }
+        .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #EEE, transparent); margin: 6rem 0; }
+        .mockup-card { transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .mockup-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 30px 60px -15px rgba(22, 50, 79, 0.15); }
+        
+        #toast {
+            visibility: hidden; opacity: 0; transform: translateY(20px) translateX(-50%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #toast.show { visibility: visible; opacity: 1; transform: translateY(0) translateX(-50%); }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #FFFFFF; }
+        ::-webkit-scrollbar-thumb { background: #E81F4A; border-radius: 10px; }
+
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        
+        .type-sample { transition: color 0.3s ease; }
+        .type-sample:hover { color: #E81F4A; }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-nova-red selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-[100] border-b border-gray-100 glass-panel">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+            <img src="assets/LOGOS/monogram.webp" class="w-8 h-8 object-contain" alt="NovaByte Logo">                <span class="font-display font-bold text-xl tracking-tight text-nova-navy">Nova<span class="text-nova-red">Byte</span></span>
+            </div>
+            <div class="hidden lg:flex gap-10 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#overview" class="nav-link hover:text-nova-navy transition-colors">Overview</a>
+                <a href="#logo-system" class="nav-link hover:text-nova-navy transition-colors">Logo</a>
+                <a href="#color-palette" class="nav-link hover:text-nova-navy transition-colors">Palette</a>
+                <a href="#typography" class="nav-link hover:text-nova-navy transition-colors">Type</a>
+                <a href="#applications" class="nav-link hover:text-nova-navy transition-colors">Applications</a>
+            </div>
+            <a href="./assets/novabyte-brandkit.zip" download class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest bg-nova-navy text-white px-8 py-3 rounded-full hover:bg-nova-red transition-all transform hover:scale-105">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            Download Brand Kit
+            </a>        
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="overview" class="relative pt-48 pb-32 px-6 overflow-hidden">
+        <!-- Abstract Background Elements -->
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-nova-red rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-nova-navy rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-nova-gray px-4 py-2 rounded-full mb-8 border border-gray-100">
+                <span class="w-2 h-2 rounded-full bg-nova-red animate-pulse"></span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-nova-navy/60">Brand Guidelines 2026</span>
+            </div>
+            <h1 class="text-6xl md:text-[110px] font-display font-extrabold tracking-tightest mb-10 leading-[0.9] text-nova-navy">
+                Engineering <br/>the <span class="text-nova-red">Infinite.</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-500 max-w-3xl mx-auto leading-relaxed mb-24 font-light">
+                NovaByte is a high-performance IT consulting firm that helps businesses build, scale, and optimize digital systems—combining technical precision with human-driven innovation.
+            </p>
+            <div class="relative group inline-block w-full max-w-5xl">
+                <div class="absolute inset-0 bg-nova-navy/5 blur-[100px] rounded-full scale-125"></div>
+                <div class="relative bg-white p-12 md:p-24 rounded-[3rem] md:rounded-[5rem] shadow-[0_80px_140px_-30px_rgba(22,50,79,0.12)] border border-gray-50 overflow-hidden flex items-center justify-center animate-float">
+                    <!-- Updated Placeholder for Hero -->
+                <img src="assets/LOGOS/Master Lockup.png" class="w-full max-w-[600px] object-contain" alt="NovaByte Logo">                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6">
+
+        <!-- 01. LOGO SYSTEM -->
+        <section id="logo-system" class="py-24 scroll-mt-24">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-20 gap-10">
+                <div class="max-w-2xl">
+                    <span class="text-[11px] font-bold uppercase tracking-[0.4em] text-nova-red mb-6 block">Chapter 01</span>
+                    <h2 class="text-5xl md:text-6xl font-display font-bold tracking-tight text-nova-navy">Logo Architecture</h2>
+                    <p class="text-gray-500 mt-8 text-lg leading-relaxed italic">"Simplicity is the ultimate sophistication in engineering."</p>
+                    <p class="text-gray-400 mt-4 leading-relaxed">The NovaByte mark is constructed on a 12x12 grid system, ensuring mathematical symmetry and perfect rendering at micro-scales.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Standard -->
+                <div class="bg-nova-gray p-16 rounded-[2.5rem] flex flex-col items-center justify-center min-h-[400px] border border-gray-100 group">
+                <img src="assets/LOGOS/Master Lockup.png" class="max-h-12 object-contain">
+                    <div class="text-center">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-nova-navy/40">Master Lockup</span>
+                        <p class="text-[9px] text-gray-300 mt-1 uppercase tracking-tighter">Preferred for all web headers</p>
+                    </div>
+                </div>
+                <!-- Symbol -->
+                <div class="bg-white p-16 rounded-[2.5rem] flex flex-col items-center justify-center min-h-[400px] border border-gray-100 shadow-sm">
+                    <div class="w-28 h-28 bg-nova-red rounded-3xl flex items-center justify-center shadow-2xl shadow-nova-red/20 mb-16 transform -rotate-3 transition-transform hover:rotate-0">
+                        <img src="assets/LOGOS/onecolor monogram.webp" class="w-16 h-16 object-contain">
+                    </div>                    
+                    <div class="text-center">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-nova-navy/40">The Monogram</span>
+                        <p class="text-[9px] text-gray-300 mt-1 uppercase tracking-tighter">Social avatars and favicons</p>
+                    </div>
+                </div>
+                <!-- Reverse -->
+                <div class="bg-nova-navy p-16 rounded-[2.5rem] flex flex-col items-center justify-center min-h-[400px] group">
+                    <img src="assets/LOGOS/reversed palette.png" class="max-h-12 object-contain">
+                    <div class="text-center">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-white/30">Reverse Palette</span>
+                        <p class="text-[9px] text-white/10 mt-1 uppercase tracking-tighter">Use on dark backgrounds only</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 02. COLOR STRATEGY -->
+        <section id="color-palette" class="py-24 scroll-mt-24">
+            <div class="max-w-2xl mb-20">
+                <span class="text-[11px] font-bold uppercase tracking-[0.4em] text-nova-red mb-6 block">Chapter 02</span>
+                <h2 class="text-5xl md:text-6xl font-display font-bold tracking-tight text-nova-navy">Color Intelligence</h2>
+                <p class="text-gray-500 mt-8 text-lg leading-relaxed">We use color as a functional tool. <strong>Nova Red</strong> commands attention and signals action, while <strong>Tech Navy</strong> provides the canvas of stability.</p>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-16">
+                <!-- Primary Swatches -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="group cursor-pointer" onclick="copyColor('#E81F4A')">
+                        <div class="h-96 bg-nova-red rounded-[3rem] shadow-2xl shadow-nova-red/20 mb-8 transition-all group-hover:scale-[1.03] flex items-end p-10">
+                            <i data-lucide="copy" class="text-white/20 w-8 h-8 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <div class="flex justify-between items-start px-4">
+                            <div>
+                                <h4 class="font-display font-bold text-xl">Nova Red</h4>
+                                <p class="text-sm text-gray-400 uppercase tracking-widest mt-1">Aggressive Innovation</p>
+                            </div>
+                            <span class="text-sm font-mono font-bold text-nova-red bg-nova-red/5 px-3 py-1 rounded">#E81F4A</span>
+                        </div>
+                    </div>
+                    <div class="group cursor-pointer" onclick="copyColor('#16324F')">
+                        <div class="h-96 bg-nova-navy rounded-[3rem] shadow-2xl shadow-nova-navy/10 mb-8 transition-all group-hover:scale-[1.03] flex items-end p-10">
+                             <i data-lucide="copy" class="text-white/20 w-8 h-8 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <div class="flex justify-between items-start px-4">
+                            <div>
+                                <h4 class="font-display font-bold text-xl">Tech Navy</h4>
+                                <p class="text-sm text-gray-400 uppercase tracking-widest mt-1">Foundational Logic</p>
+                            </div>
+                            <span class="text-sm font-mono font-bold text-nova-navy bg-nova-navy/5 px-3 py-1 rounded">#16324F</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Color Guidelines -->
+                <div class="flex flex-col justify-center space-y-12">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-10 bg-nova-black rounded-[2.5rem] flex flex-col justify-between h-48 cursor-pointer group" onclick="copyColor('#0A0A0A')">
+                            <span class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Midnight Onyx</span>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-mono text-sm">#0A0A0A</span>
+                                <i data-lucide="copy" class="w-4 h-4 text-white/0 group-hover:text-white transition-all"></i>
+                            </div>
+                        </div>
+                        <div class="p-10 bg-white border border-gray-100 rounded-[2.5rem] flex flex-col justify-between h-48 cursor-pointer group shadow-sm" onclick="copyColor('#FFFFFF')">
+                            <span class="text-gray-300 text-[10px] uppercase font-bold tracking-widest">Absolute White</span>
+                            <div class="flex justify-between items-center">
+                                <span class="text-nova-navy font-mono text-sm">#FFFFFF</span>
+                                <i data-lucide="copy" class="w-4 h-4 text-gray-300 group-hover:text-nova-red transition-all"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-nova-gray p-12 rounded-[3rem] border border-gray-100">
+                        <h5 class="font-bold text-nova-navy mb-6 flex items-center gap-3">
+                            <i data-lucide="info" class="w-5 h-5 text-nova-red"></i> Usage Distribution
+                        </h5>
+                        <div class="w-full h-3 bg-gray-200 rounded-full flex overflow-hidden mb-8">
+                            <div class="w-[60%] h-full bg-nova-navy"></div>
+                            <div class="w-[30%] h-full bg-nova-red border-x "></div>
+                            <div class="w-[10%] h-full bg-nova-gray border-x"></div>
+                        </div>
+                        <div class="grid grid-cols-3 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                            <div>60% Navy</div>
+                            <div class="text-center">30% Red</div>
+                            <div class="text-right">10% White</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 03. TYPOGRAPHY -->
+        <section id="typography" class="py-24 scroll-mt-24">
+            <div class="max-w-2xl mb-24">
+                <span class="text-[11px] font-bold uppercase tracking-[0.4em] text-nova-red mb-6 block">Chapter 03</span>
+                <h2 class="text-5xl md:text-6xl font-display font-bold tracking-tight text-nova-navy">Type Systems</h2>
+                <p class="text-gray-500 mt-8 text-lg leading-relaxed">Our typography is selected for maximum legibility in code-heavy environments and high-impact marketing.</p>
+            </div>
+
+            <div class="space-y-32">
+                <!-- Display Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                    <div class="lg:col-span-4 sticky top-32">
+                        <div class="inline-block bg-nova-red text-white text-[10px] font-bold px-3 py-1 rounded mb-4">PRIMARY DISPLAY</div>
+                        <h5 class="text-4xl font-display font-bold text-nova-navy">Poppins</h5>
+                        <p class="text-gray-400 mt-4 leading-relaxed">Geometric sans-serif with a modern technical personality. Used for all primary headlines.</p>
+                        <div class="mt-8 flex gap-4">
+                            <span class="w-8 h-8 rounded border border-gray-200 flex items-center justify-center font-bold text-xs">Aa</span>
+                            <span class="w-8 h-8 rounded border border-gray-200 flex items-center justify-center italic text-xs">Aa</span>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-8 space-y-10">
+                        <p class="text-6xl md:text-[100px] font-display font-extrabold tracking-tightest text-nova-navy leading-[0.85] type-sample">
+                            Precision is the core of Power.
+                        </p>
+                        <div class="h-px w-full bg-gray-100"></div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                            <div class="text-4xl font-display font-extrabold">AaBbCc</div>
+                            <div class="text-4xl font-display font-bold">AaBbCc</div>
+                            <div class="text-4xl font-display font-semibold">AaBbCc</div>
+                            <div class="text-4xl font-display font-medium">AaBbCc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                    <div class="lg:col-span-4 sticky top-32">
+                        <div class="inline-block bg-nova-navy text-white text-[10px] font-bold px-3 py-1 rounded mb-4">SYSTEM INTERFACE</div>
+                        <h5 class="text-4xl font-sans font-normal text-nova-navy">Inter</h5>
+                        <p class="text-gray-400 mt-4 leading-relaxed">Highly versatile typeface designed for screen readability. Used for all UI and body text.</p>
+                    </div>
+                    <div class="lg:col-span-8 bg-nova-gray p-12 md:p-20 rounded-[3rem]">
+                        <p class="text-xl md:text-3xl font-sans text-nova-navy/70 leading-[1.6] max-w-3xl">
+                            "The design of NovaByte's software ecosystem is rooted in the belief that complexity should be hidden behind a layer of absolute clarity. Every bit of data, every pixel, and every line of code must serve the end-user experience."
+                        </p>
+                        <div class="mt-12 flex flex-wrap gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                            <span>Inter Regular</span>
+                            <span>Inter Medium</span>
+                            <span>Inter SemiBold</span>
+                            <span>Inter Bold</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 04. APPLICATIONS -->
+        <section id="applications" class="py-24 scroll-mt-24 mb-32">
+            <div class="text-center max-w-3xl mx-auto mb-24">
+                <span class="text-[11px] font-bold uppercase tracking-[0.4em] text-nova-red mb-6 block">Chapter 04</span>
+                <h2 class="text-5xl md:text-7xl font-display font-bold tracking-tight text-nova-navy leading-none">The Brand in <br/>Motion.</h2>
+                <p class="text-gray-400 mt-8 text-lg">From architectural signage to mobile interfaces, the NovaByte identity remains cohesive across every touchpoint.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+                
+                <!-- Large: HQ Concept -->
+                <div class="mockup-card lg:col-span-8 h-[650px] bg-nova-navy rounded-[3.5rem] overflow-hidden relative group">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center mix-blend-overlay opacity-20 grayscale transition-transform duration-1000 group-hover:scale-110"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div class="text-white/5 font-display font-bold text-[18rem] absolute opacity-20 select-none">N</div>
+                        <div class="relative z-10 text-center scale-150 transform transition-transform group-hover:scale-125 duration-700">
+                            <!-- Application Placeholder -->
+                            <img src="assets/LOGOS/reversed palette.png" alt="Signage Placeholder" class="max-h-24 object-contain">
+                            <p class="text-white/40 mt-6 uppercase tracking-[0.8em] text-[10px] font-bold">EMEA Headquarters / London</p>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-12 left-12">
+                        <h4 class="text-white font-bold text-2xl">Dimensional Signage</h4>
+                        <p class="text-white/40 text-sm mt-2">Backlit laser-cut aluminum on raw concrete.</p>
+                    </div>
+                </div>
+
+                <!-- Portrait: App UI -->
+                <div class="mockup-card lg:col-span-4 h-[650px] bg-[#EEF2F6] rounded-[3.5rem] flex flex-col items-center justify-center p-12 border border-white">
+                    <div class="w-48 h-48 bg-nova-navy rounded-[3rem] shadow-[0_40px_80px_-20px_rgba(22,50,79,0.3)] flex items-center justify-center relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-nova-red/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <img src="assets/LOGOS/onecolor monogram.webp" class="w-24 h-24 object-contain">
+                    </div>
+                    <div class="mt-16 text-center">
+                        <h4 class="text-nova-navy font-bold text-2xl">Global Ecosystem Icon</h4>
+                        <p class="text-gray-400 text-sm mt-3 leading-relaxed">Optimized for iOS, Android, and Web extensions.</p>
+                        <div class="mt-8 flex gap-3 justify-center">
+                            <div class="w-1.5 h-1.5 rounded-full bg-nova-red"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Wide: Interface Design -->
+            <div class="mockup-card lg:col-span-7 h-[550px] bg-nova-black rounded-[3.5rem] overflow-hidden relative group">
+
+                <!-- Interface Image -->
+                <img 
+                    src="./assets/Novabyte_landingPage.webp" 
+                    alt="NovaOS Interface"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                >
+
+                <!-- Optional dark overlay for readability -->
+                <div class="absolute inset-0 bg-black/30"></div>
+
+                <!-- Caption -->
+                <div class="absolute bottom-12 left-12">
+                    <h4 class="text-white font-bold text-2xl">NovaOS Terminal UI</h4>
+                    <p class="text-white/40 text-sm mt-2 italic">Synthesizing raw data into visual intelligence.</p>
+                </div>
+
+            </div>
+                <!-- Small: Merchandise -->
+                <div class="mockup-card lg:col-span-5 h-[550px] bg-nova-red rounded-[3.5rem] flex items-center justify-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=1000')] bg-cover bg-center mix-blend-multiply opacity-20 grayscale transition-transform duration-1000 group-hover:scale-110"></div>
+                    <div class="relative z-10 w-56 h-56 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-full flex items-center justify-center shadow-2xl overflow-hidden">
+                        <img src="assets/LOGOS/onecolor monogram.webp" alt="NovaByte Logo" class="w-32 h-32 object-contain">
+                    </div>
+                    <div class="absolute bottom-12 right-12 text-right">
+                        <h4 class="text-white font-bold text-2xl">Hardware Apparel</h4>
+                        <p class="text-white/60 text-sm mt-2">Internal engineer-kit embroidery.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-nova-black py-40 px-6 text-center border-t border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-nova-red/5 to-transparent"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <img src="assets/LOGOS/onecolor monogram.webp" class="w-16 h-16 mx-auto object-contain mb-12">
+            <h2 class="text-5xl md:text-7xl font-display font-bold text-white mb-10 tracking-tightest">Design for the <br/><span class="text-nova-red">Long Tail.</span></h2>
+            <p class="text-white/30 max-w-2xl mx-auto mb-16 text-lg leading-relaxed">NovaByte Identity System v1.0. Developed by the Global Brand Division. For licensing and asset inquiries, contact our architecture team.</p>
+            <div class="flex flex-wrap justify-center gap-12 text-[11px] font-bold uppercase tracking-[0.4em] text-white/20">
+                <a href="#" class="hover:text-nova-red transition-colors">X / Twitter</a>
+                <a href="#" class="hover:text-nova-red transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-nova-red transition-colors">GitHub</a>
+                <a href="#" class="hover:text-nova-red transition-colors">Dribbble</a>
+            </div>
+            <p class="mt-24 text-[10px] text-white/10 uppercase tracking-widest font-mono">© 2026 NOVABYTE TECHNOLOGY SOLUTIONS. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-10 left-1/2 bg-nova-navy text-white px-10 py-6 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex items-center gap-6 z-[200] border border-white/10 glass-panel">
+        <div class="bg-nova-red rounded-full p-2.5 flex items-center justify-center shadow-lg shadow-nova-red/20">
+            <i data-lucide="check" class="w-4 h-4 text-white"></i>
+        </div>
+        <div>
+            <p class="font-bold text-base text-white">Hex Code Copied</p>
+            <p class="text-[10px] text-white/40 uppercase tracking-widest mt-0.5">Ready for your design system</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Copy Color to Clipboard
+        function copyColor(hex) {
+            const temp = document.createElement('textarea');
+            temp.value = hex;
+            document.body.appendChild(temp);
+            temp.select();
+            
+            try {
+                // Using standard execCommand as per instructions for iframe safety
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                console.error('Failed to copy', err);
+            }
+            
+            document.body.removeChild(temp);
+        }
+
+        // Show Feedback Toast
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Active Section Navigation Tracking
+        const sections = document.querySelectorAll('section, header');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("text-nova-red");
+                link.classList.add("text-gray-400");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("text-nova-red");
+                    link.classList.remove("text-gray-400");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

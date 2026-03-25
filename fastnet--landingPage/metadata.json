@@ -1,0 +1,7 @@
+{
+  "name": "FastNet - Ultra-Fast Internet Solutions",
+  "description": "A highly modern landing page for FastNet, an internet service provider specializing in 4G LTE, Fiber, and ICT infrastructure in Rwanda.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
