@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, Send, Bot, User as UserIcon, Loader2 } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { PRODUCTS } from '../constants';
 
 const Chatbot: React.FC = () => {
@@ -28,7 +28,12 @@ const Chatbot: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.GEMINI_API_KEY;
+      if (!apiKey || apiKey === "MY_GEMINI_API_KEY") {
+        throw new Error("Gemini API key is not configured.");
+      }
+
+      const genAI = new GoogleGenerativeAI(apiKey);
       
       const productContext = PRODUCTS.map(p => 
         `${p.title}: ${p.desc} (Price: ${p.price}, Category: ${p.category}, Occasion: ${p.occasion})`
@@ -53,24 +58,32 @@ const Chatbot: React.FC = () => {
         - Global Shipping: We ship our luxury pieces worldwide.
       `;
 
-      const chat = ai.chats.create({
-        model: "gemini-3-flash-preview",
-        config: {
-          systemInstruction,
-        },
-        history: messages.map(m => ({
-          role: m.role,
-          parts: [{ text: m.text }]
-        }))
+      const model = genAI.getGenerativeModel({ 
+        model: "gemini-1.5-flash",
+        systemInstruction: systemInstruction 
       });
 
-      const result = await chat.sendMessage({ message: userMessage });
-      const responseText = result.text || "I apologize, I am unable to process that request at the moment. How else can I help you with our collections?";
+      // Filter messages to ensure history alternating and starts with user if needed, 
+      // but Gemini 1.5 usually handles a model-first greeting if it's the very first message.
+      const history = messages.map(m => ({
+        role: m.role,
+        parts: [{ text: m.text }]
+      }));
+
+      const chat = model.startChat({ history });
+
+      const result = await chat.sendMessage(userMessage);
+      const response = await result.response;
+      const responseText = response.text() || "I apologize, I am unable to process that request at the moment. How else can I help you with our collections?";
       
       setMessages(prev => [...prev, { role: 'model', text: responseText }]);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Chatbot error:", error);
-      setMessages(prev => [...prev, { role: 'model', text: "I encountered a slight technical difficulty. Please try again or contact our atelier directly." }]);
+      let errorMessage = "I encountered a slight technical difficulty. Please try again or contact our atelier directly.";
+      if (error.message?.includes("API key")) {
+        errorMessage = "The AI Assistant is currently undergoing maintenance (API Key missing). Please check back soon or contact support.";
+      }
+      setMessages(prev => [...prev, { role: 'model', text: errorMessage }]);
     } finally {
       setIsLoading(false);
     }

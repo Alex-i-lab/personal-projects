@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
+import React, { createContext, useContext, useState, useMemo, useEffect, useCallback } from 'react';
 import { PRODUCTS, ITEMS_PER_PAGE } from '../constants';
 import * as codes from 'currency-codes';
 import Cookies from 'js-cookie';
@@ -133,9 +133,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     });
   };
 
-  const isInWishlist = (title: string) => {
-    return wishlist.some(item => item.title === title);
-  };
+  const isInWishlist = useCallback((id: string) => {
+    return wishlist.some(item => item.id === id);
+  }, [wishlist]);
   
   // Review handling - Firebase removal: using static reviews from constants
   useEffect(() => {
@@ -270,7 +270,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     });
   };
 
-  const formatPrice = (priceInput: string | number) => {
+  const formatPrice = useCallback((priceInput: string | number) => {
     let numericPrice: number;
     if (typeof priceInput === 'string') {
       numericPrice = parseFloat(priceInput.replace(/[^0-9.]/g, ''));
@@ -286,7 +286,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(converted);
-  };
+  }, [currency]);
 
   const addToCart = (product: any, size: string) => {
     setCart(prev => {
@@ -317,39 +317,50 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const clearCart = () => setCart([]);
 
-  const cartTotal = cart.reduce((sum, item) => {
-    const price = typeof item.price === 'string' 
-      ? parseFloat(item.price.replace(/[^0-9.]/g, ''))
-      : item.price;
-    return sum + (price * item.quantity);
-  }, 0);
+  const cartTotal = useMemo(() => {
+    return cart.reduce((sum, item) => {
+      const price = typeof item.price === 'string' 
+        ? parseFloat(item.price.replace(/[^0-9.]/g, ''))
+        : item.price;
+      return sum + (price * item.quantity);
+    }, 0);
+  }, [cart]);
 
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartCount = useMemo(() => {
+    return cart.reduce((sum, item) => sum + item.quantity, 0);
+  }, [cart]);
+
+  const value = useMemo(() => ({
+    cart, addToCart, updateQuantity, removeFromCart, cartTotal, cartCount,
+    isCartOpen, setIsCartOpen, isCheckoutOpen, setIsCheckoutOpen,
+    checkoutStep, setCheckoutStep, selectedProductForReviews, setSelectedProductForReviews,
+    quickViewProduct, setQuickViewProduct,
+    isMenuOpen, setIsMenuOpen,
+    isSearchOpen, setIsSearchOpen,
+    clearCart,
+    currency,
+    setCurrency: handleSetCurrency,
+    formatPrice,
+    allCurrencies,
+    isLoadingRates,
+    products,
+    isLoadingProducts,
+    placeOrder,
+    wishlist,
+    toggleWishlist,
+    isInWishlist,
+    reviews,
+    isLoadingReviews,
+    addReview
+  }), [
+    cart, cartTotal, cartCount, isCartOpen, isCheckoutOpen, checkoutStep, 
+    selectedProductForReviews, quickViewProduct, isMenuOpen, isSearchOpen, 
+    currency, allCurrencies, isLoadingRates, products, isLoadingProducts, 
+    wishlist, reviews, isLoadingReviews, formatPrice, isInWishlist
+  ]);
 
   return (
-    <AppContext.Provider value={{
-      cart, addToCart, updateQuantity, removeFromCart, cartTotal, cartCount,
-      isCartOpen, setIsCartOpen, isCheckoutOpen, setIsCheckoutOpen,
-      checkoutStep, setCheckoutStep, selectedProductForReviews, setSelectedProductForReviews,
-      quickViewProduct, setQuickViewProduct,
-      isMenuOpen, setIsMenuOpen,
-      isSearchOpen, setIsSearchOpen,
-      clearCart,
-      currency,
-      setCurrency: handleSetCurrency,
-      formatPrice,
-      allCurrencies,
-      isLoadingRates,
-      products,
-      isLoadingProducts,
-      placeOrder,
-      wishlist,
-      toggleWishlist,
-      isInWishlist,
-      reviews,
-      isLoadingReviews,
-      addReview
-    }}>
+    <AppContext.Provider value={value}>
       {children}
     </AppContext.Provider>
   );

@@ -32,6 +32,7 @@ const Home: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover animate-slow-zoom"
           referrerPolicy="no-referrer"
           fetchPriority="high"
+          sizes="100vw"
         />
         <div className="relative z-20 h-full flex flex-col items-center justify-center text-white px-6 text-center">
           <motion.div
@@ -115,6 +116,7 @@ const Home: React.FC = () => {
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                       referrerPolicy="no-referrer"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
                   </Link>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none" />
