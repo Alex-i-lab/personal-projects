@@ -724,21 +724,21 @@ const Services = () => {
     {
       title: "Services",
       icon: <Wifi className="text-primary" size={32} />,
-      hoverBg: "hover:bg-primary/5",
+      hoverBg: "sm:hover:bg-primary/5",
       description: "Our core connectivity services are designed to keep your business running at peak performance. We provide end-to-end solutions from initial infrastructure setup to ongoing maintenance and support.",
       items: ["Internet Service Provider", "ICT Infrastructure", "Fibre Networks", "Virtual Private Network", "Wireless Communication", "Voice Over IP", "IP CCTV", "IP TV"]
     },
     {
       title: "Solutions",
       icon: <Cloud className="text-secondary" size={32} />,
-      hoverBg: "hover:bg-secondary/5",
+      hoverBg: "sm:hover:bg-secondary/5",
       description: "We offer tailored IT solutions that address the unique challenges of your organization. From cloud migration to robust network security, our experts ensure your digital assets are protected and efficient.",
       items: ["Broadband", "Cloud Services", "IT advisory and Support", "Network Design & Implementation", "Network Security", "Data Solutions", "Backup and Recovery"]
     },
     {
       title: "Retail",
       icon: <Monitor className="text-accent" size={32} />,
-      hoverBg: "hover:bg-accent/5",
+      hoverBg: "sm:hover:bg-accent/5",
       description: "Access high-quality telecommunication and networking hardware through our retail division. We source only the most reliable equipment to ensure long-term stability for your network infrastructure.",
       items: ["Telecommunication Equipment", "Network Devices", "Security Equipment"]
     }
@@ -776,11 +776,11 @@ const Services = () => {
               }}
               onClick={() => setSelectedService(service)}
               className={cn(
-                "bg-white p-10 rounded-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 group cursor-pointer",
+                "bg-white p-6 sm:p-10 rounded-[40px] shadow-sm sm:hover:shadow-2xl transition-all duration-300 group cursor-pointer",
                 service.hoverBg
               )}
             >
-              <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 sm:group-hover:scale-110 transition-transform">
                 {service.icon}
               </div>
               <h4 className="text-2xl font-display font-bold mb-6">{service.title}</h4>
@@ -792,7 +792,7 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-3 transition-all">
+              <div className="mt-8 flex items-center gap-2 text-primary font-bold text-sm sm:group-hover:gap-3 transition-all">
                 Learn More <ArrowRight size={16} />
               </div>
             </motion.div>
@@ -824,7 +824,7 @@ const Services = () => {
                 <X size={24} />
               </button>
               
-              <div className="p-8 sm:p-12">
+              <div className="p-6 sm:p-12">
                 <div className="w-20 h-20 bg-slate-50 rounded-3xl flex items-center justify-center mb-8">
                   {selectedService.icon}
                 </div>
@@ -944,7 +944,7 @@ const Pricing = () => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={cn(
-                  "px-4 sm:px-8 py-2.5 sm:py-3 rounded-xl text-[10px] sm:text-sm font-bold uppercase tracking-wider transition-all whitespace-nowrap",
+                  "px-3 sm:px-8 py-2.5 sm:py-3 rounded-xl text-[10px] sm:text-sm font-bold uppercase tracking-wider transition-all whitespace-nowrap",
                   activeTab === tab ? "bg-white text-primary shadow-sm" : "text-slate-500 hover:text-slate-700"
                 )}
               >
@@ -958,7 +958,7 @@ const Pricing = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto bg-slate-50 p-8 sm:p-12 rounded-[40px] border border-slate-200"
+            className="max-w-3xl mx-auto bg-slate-50 p-6 sm:p-12 rounded-[40px] border border-slate-200"
           >
             <div className="text-center mb-12">
               <h4 className="text-2xl font-display font-bold mb-2">Build Your Custom Fiber Plan</h4>
@@ -969,7 +969,7 @@ const Pricing = () => {
               <div className="space-y-6">
                 <div className="flex justify-between items-end">
                   <label className="text-sm font-bold uppercase tracking-widest text-slate-400">Bandwidth (Mbps)</label>
-                  <span className="text-5xl font-black text-primary">{customMbps}<span className="text-xl font-bold text-slate-400 ml-1">Mbps</span></span>
+                  <span className="text-4xl sm:text-5xl font-black text-primary">{customMbps}<span className="text-xl font-bold text-slate-400 ml-1">Mbps</span></span>
                 </div>
                 <input 
                   type="range" 
@@ -1012,9 +1012,9 @@ const Pricing = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: idx * 0.05 }}
-                className="group p-8 rounded-[32px] border border-slate-100 hover:border-primary/20 hover:bg-primary/[0.02] transition-all relative overflow-hidden"
+                className="group p-6 sm:p-8 rounded-[32px] border border-slate-100 sm:hover:border-primary/20 sm:hover:bg-primary/[0.02] transition-all relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-[100px] -mr-12 -mt-12 group-hover:scale-150 transition-transform" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-[100px] -mr-12 -mt-12 sm:group-hover:scale-150 transition-transform" />
                 {plan.category && (
                   <p className="text-[10px] font-black text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-4 tracking-[0.2em]">
                     {plan.category}
@@ -1028,7 +1028,7 @@ const Pricing = () => {
                 </div>
                 <button 
                   onClick={handleSubscribe}
-                  className="w-full py-4 rounded-2xl bg-slate-50 text-slate-900 font-bold hover:bg-primary hover:text-white transition-all"
+                  className="w-full py-4 rounded-2xl bg-primary text-white sm:bg-slate-50 sm:text-slate-900 font-bold sm:hover:bg-primary sm:hover:text-white transition-all"
                 >
                   Subscribe Now
                 </button>
@@ -1100,7 +1100,7 @@ const Testimonials = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="bg-white p-8 sm:p-12 rounded-[40px] shadow-xl border border-slate-100 flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full"
+                className="bg-white p-6 sm:p-12 rounded-[40px] shadow-xl border border-slate-100 flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full"
               >
                 <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden shrink-0 border-4 border-primary/10">
                   <img 
@@ -1403,7 +1403,7 @@ const Contact = () => {
             className="text-center lg:text-left"
           >
             <h2 className="text-sm font-bold text-secondary uppercase tracking-[0.3em] mb-4">Connect With Us</h2>
-            <h3 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-12 leading-tight">
+            <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold mb-12 leading-tight">
               Ready to Get <span className="text-primary">Connected?</span>
             </h3>
             
@@ -1628,7 +1628,7 @@ const TopUpPage = ({ setView }: { setView: (view: 'landing' | 'topup') => void }
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white p-8 sm:p-12 rounded-[40px] shadow-xl border border-slate-100"
+            className="bg-white p-6 sm:p-12 rounded-[40px] shadow-xl border border-slate-100"
           >
             <div className="flex items-center gap-4 mb-8">
               <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
@@ -1708,7 +1708,7 @@ const TopUpPage = ({ setView }: { setView: (view: 'landing' | 'topup') => void }
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-slate-900 p-8 sm:p-12 rounded-[40px] shadow-2xl border border-white/10 flex flex-col h-[600px] lg:h-auto"
+            className="bg-slate-900 p-6 sm:p-12 rounded-[40px] shadow-2xl border border-white/10 flex flex-col h-[600px] lg:h-auto"
           >
             <div className="flex items-center gap-4 mb-8">
               <div className="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary">

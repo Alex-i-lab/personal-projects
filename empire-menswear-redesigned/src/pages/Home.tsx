@@ -17,18 +17,18 @@ const Home: React.FC = () => {
         <meta name="description" content="Discover Empire Menswear, the pinnacle of luxury menswear. Explore our collection of premium knitwear, outerwear, and bespoke tailoring handcrafted in Milan." />
         <link rel="canonical" href="https://empire-menswear.luxury/" />
         <link rel="preconnect" href="https://res.cloudinary.com" />
-        <link 
-          rel="preload" 
-          as="image" 
-          href={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306147/hero_ynvxcc.png", { width: IMAGE_SIZES.HERO })} 
+        <link
+          rel="preload"
+          as="image"
+          href={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306147/hero_ynvxcc.png", { width: IMAGE_SIZES.HERO })}
         />
       </Helmet>
       {/* HERO SECTION */}
       <section className="relative h-screen min-h-[600px] md:h-[90vh] lg:h-screen overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 z-10" />
-        <img 
-          src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306147/hero_ynvxcc.png", { width: IMAGE_SIZES.HERO })} 
-          alt="Empire Menswear Hero" 
+        <img
+          src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306147/hero_ynvxcc.png", { width: IMAGE_SIZES.HERO })}
+          alt="Empire Menswear Hero"
           className="absolute inset-0 w-full h-full object-cover animate-slow-zoom"
           referrerPolicy="no-referrer"
           fetchPriority="high"
@@ -50,20 +50,20 @@ const Home: React.FC = () => {
               Discover the pinnacle of Milanese craftsmanship. Hand-stitched garments crafted from the world's rarest noble fibers.
             </p>
             <div className="pt-6 sm:pt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full">
-              <Link 
+              <Link
                 to="/shop"
                 className="w-full sm:w-auto bg-gold text-white px-10 sm:px-12 md:px-14 py-4 sm:py-5 md:py-6 rounded-full text-[11px] sm:text-[13px] md:text-[14px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium hover:bg-gold-dark transition-all duration-500 shadow-2xl"
               >
                 Explore Collection
               </Link>
-              <a 
+              <a
                 href="#bespoke"
                 className="w-full sm:w-auto bg-transparent border border-white/40 backdrop-blur-sm text-white px-10 sm:px-12 md:px-14 py-4 sm:py-5 md:py-6 rounded-full text-[11px] sm:text-[13px] md:text-[14px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium hover:bg-white hover:text-black transition-all duration-500"
               >
                 Bespoke Service
               </a>
             </div>
-            
+
             {/* Scroll Indicator - Positioned relative to content to ensure alignment */}
             <div className="pt-12 animate-bounce opacity-40 hidden sm:block">
               <div className="w-[1px] h-12 bg-white mx-auto" />
@@ -79,7 +79,7 @@ const Home: React.FC = () => {
             <p className="text-[11px] text-[#AAAAAA] uppercase tracking-[0.4em]">Curated Selection</p>
             <h2 className="font-serif text-4xl sm:text-5xl font-normal tracking-tight">Featured Pieces</h2>
           </div>
-          <Link 
+          <Link
             to="/shop"
             className="text-[13px] uppercase tracking-[0.2em] border-b border-black pb-2 hover:opacity-60 transition-opacity font-medium"
           >
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
             ))
           ) : (
             products.slice(0, 8).map((product, index) => (
-              <motion.div 
+              <motion.div
                 key={product.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -110,9 +110,9 @@ const Home: React.FC = () => {
               >
                 <div className="relative aspect-[3/4] overflow-hidden bg-[#F5F5F5] rounded-[20px]">
                   <Link to={`/product/${product.id}`}>
-                    <img 
-                      src={getOptimizedUrl(product.img, { width: IMAGE_SIZES.PRODUCT_CARD })} 
-                      alt={product.title} 
+                    <img
+                      src={getOptimizedUrl(product.img, { width: IMAGE_SIZES.PRODUCT_CARD })}
+                      alt={product.title}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                       referrerPolicy="no-referrer"
@@ -121,7 +121,7 @@ const Home: React.FC = () => {
                   </Link>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none" />
                   <div className="absolute top-4 right-4 flex flex-col gap-2 translate-x-12 group-hover:translate-x-0 transition-transform duration-500">
-                    <button 
+                    <button
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -132,7 +132,7 @@ const Home: React.FC = () => {
                     >
                       <Heart size={16} className={isInWishlist(product.id) ? "fill-white" : ""} />
                     </button>
-                    <button 
+                    <button
                       onClick={(e) => {
                         e.stopPropagation();
                         setQuickViewProduct(product);
@@ -143,7 +143,7 @@ const Home: React.FC = () => {
                       <Eye size={16} />
                     </button>
                   </div>
-                  <button 
+                  <button
                     onClick={() => setQuickViewProduct(product)}
                     className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md text-black py-4 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-black hover:text-white shadow-xl"
                   >
@@ -158,16 +158,16 @@ const Home: React.FC = () => {
                     </div>
                     <span className="font-medium text-sm sm:text-lg">{formatPrice(product.price)}</span>
                   </div>
-                  <div 
+                  <div
                     className="flex items-center gap-2 pt-2 cursor-pointer hover:opacity-60 transition-opacity"
                     onClick={() => setSelectedProductForReviews(product)}
                   >
                     <div className="flex gap-0.5">
                       {[1, 2, 3, 4, 5].map((star) => (
-                        <Star 
-                          key={star} 
-                          size={10} 
-                          fill={star <= Math.floor(product.rating) ? "var(--color-gold)" : "transparent"} 
+                        <Star
+                          key={star}
+                          size={10}
+                          fill={star <= Math.floor(product.rating) ? "var(--color-gold)" : "transparent"}
                           strokeWidth={1}
                           className={star <= Math.floor(product.rating) ? "text-gold" : "text-[#AAAAAA]"}
                         />
@@ -185,18 +185,18 @@ const Home: React.FC = () => {
       {/* BESPOKE SECTION */}
       <section id="bespoke" className="px-4 sm:px-16">
         <div className="relative min-h-[600px] h-[80vh] md:h-[70vh] lg:h-[80vh] rounded-[30px] sm:rounded-[40px] overflow-hidden group">
-          <img 
-            src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306538/lifestyle_noz9n3.webp", { width: IMAGE_SIZES.PRODUCT_DETAIL })} 
-            alt="Bespoke Tailoring" 
+          <img
+            src={getOptimizedUrl("https://res.cloudinary.com/dcy26s9jm/image/upload/v1774306538/lifestyle_noz9n3.webp", { width: IMAGE_SIZES.PRODUCT_DETAIL })}
+            alt="Bespoke Tailoring"
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
             referrerPolicy="no-referrer"
           />
           {/* Responsive Gradient: Bottom-to-top on mobile, Left-to-right on desktop */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/40 md:to-transparent z-10" />
-          
+
           <div className="relative z-20 h-full flex items-end md:items-center px-8 sm:px-16 lg:px-24 pb-16 md:pb-0">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -210,7 +210,7 @@ const Home: React.FC = () => {
                 Experience the pinnacle of sartorial excellence. Our master tailors work with you to create a garment that is uniquely yours, crafted from the world's finest fabrics.
               </p>
               <div className="pt-4">
-                <Link 
+                <Link
                   to="/contact?subject=bespoke"
                   className="inline-block w-full sm:w-auto bg-gold text-white px-10 sm:px-12 md:px-14 py-4 sm:py-5 md:py-6 rounded-full text-[12px] sm:text-[13px] md:text-[14px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium hover:bg-gold-dark transition-all duration-500 shadow-xl text-center"
                 >
@@ -284,7 +284,7 @@ const Home: React.FC = () => {
               <p className="text-[11px] text-[#AAAAAA] uppercase tracking-[0.4em]">Visit Us</p>
               <h2 className="font-serif text-4xl sm:text-5xl tracking-tight">The Kigali <br /><span className="italic">Flagship</span></h2>
             </div>
-            
+
             <div className="space-y-8">
               <div className="space-y-2">
                 <h4 className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#AAAAAA]">Address</h4>
@@ -311,7 +311,7 @@ const Home: React.FC = () => {
             </div>
 
             <div className="pt-8">
-              <Link 
+              <Link
                 to="/contact?subject=appointment"
                 className="inline-block bg-black text-white px-12 py-5 rounded-full text-[13px] uppercase tracking-[0.2em] font-medium hover:bg-gold transition-all duration-500 shadow-xl"
               >
@@ -319,15 +319,15 @@ const Home: React.FC = () => {
               </Link>
             </div>
           </div>
-          
+
           <div className="lg:w-[45%] p-6 sm:p-12 lg:p-16 bg-[#F0F0F0]">
             <div className="w-full h-full min-h-[400px] lg:min-h-[500px] rounded-[32px] overflow-hidden shadow-2xl relative group">
-              <iframe 
-                width="100%" 
-                height="100%" 
-                frameBorder="0" 
-                style={{ border: 0 }} 
-                src="https://maps.google.com/maps?q=EMPIRE+MENS+WEAR,+La+Bonne+Adresse,+KN+2+Roundabout,+Kigali&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              <iframe
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                style={{ border: 0 }}
+                src="https://maps.google.com/maps?q=EMPIRE+MENS+WEAR,+La+Bonne+Adresse,+KN+2+Roundabout,+Kigali&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 allowFullScreen
                 className="absolute inset-0 grayscale hover:grayscale-0 transition-all duration-700"
               ></iframe>
