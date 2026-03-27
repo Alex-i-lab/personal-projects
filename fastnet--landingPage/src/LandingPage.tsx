@@ -161,7 +161,7 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
               key={link.name} 
               href={link.href}
               onClick={(e) => onNavigate(e, link.href, link.onClick)}
-              className="text-sm font-medium hover:text-secondary transition-colors"
+              className="text-sm font-medium sm:hover:text-secondary transition-colors"
             >
               {link.name}
             </a>
@@ -169,7 +169,7 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
           
           <button 
             onClick={() => setSearchOpen(true)}
-            className="p-2 hover:bg-slate-100 rounded-full transition-colors"
+            className="p-2 sm:hover:bg-slate-100 rounded-full transition-colors"
             aria-label="Search"
           >
             <Search size={20} />
@@ -177,7 +177,7 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
 
           <button 
             onClick={() => setSupportOpen(true)}
-            className="text-sm font-bold text-primary hover:text-secondary transition-colors"
+            className="text-sm font-bold text-primary sm:hover:text-secondary transition-colors"
           >
             Get Support
           </button>
@@ -187,7 +187,7 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
               setView('landing');
               window.location.hash = 'pricing';
             }}
-            className="bg-primary text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all hover:scale-105 active:scale-95"
+            className="bg-primary text-white px-6 py-2 rounded-full text-sm font-semibold sm:hover:bg-primary/90 transition-all sm:hover:scale-105 active:scale-95"
           >
             Get Started
           </button>
@@ -197,14 +197,14 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
         <div className="flex items-center gap-2 lg:hidden">
           <button 
             onClick={() => setSearchOpen(true)}
-            className="p-2 hover:bg-slate-100 rounded-full transition-colors"
+            className="p-2 sm:hover:bg-slate-100 rounded-full transition-colors"
             aria-label="Search"
           >
             <Search size={20} />
           </button>
           <button 
             onClick={() => setSupportOpen(true)}
-            className="p-2 hover:bg-slate-100 rounded-full transition-colors"
+            className="p-2 sm:hover:bg-slate-100 rounded-full transition-colors"
             aria-label="Support"
           >
             <LifeBuoy size={20} />
@@ -244,7 +244,7 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
                     setSearchOpen(false);
                     setSearchQuery('');
                   }}
-                  className="p-2 hover:bg-slate-100 rounded-full transition-colors"
+                  className="p-2 sm:hover:bg-slate-100 rounded-full transition-colors"
                 >
                   <X />
                 </button>
@@ -261,7 +261,7 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
                         <button 
                           key={tag}
                           onClick={() => setSearchQuery(tag)}
-                          className="px-4 py-2 bg-slate-100 hover:bg-primary hover:text-white rounded-full text-sm font-bold transition-all"
+                          className="px-4 py-2 bg-slate-100 sm:hover:bg-primary sm:hover:text-white rounded-full text-sm font-bold transition-all"
                         >
                           {tag}
                         </button>
@@ -285,14 +285,14 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
                             setSearchOpen(false);
                             setSearchQuery('');
                           }}
-                          className="flex items-center justify-between p-4 rounded-2xl border border-slate-100 hover:border-primary/20 hover:bg-primary/[0.02] transition-all group"
+                          className="flex items-center justify-between p-4 rounded-2xl border border-slate-100 sm:hover:border-primary/20 sm:hover:bg-primary/[0.02] transition-all group"
                         >
                           <div>
                             <p className="text-[10px] font-black text-primary uppercase tracking-widest mb-1">{item.category}</p>
                             <h5 className="font-bold text-slate-900">{item.name}</h5>
                             {item.price && <p className="text-sm text-slate-500 font-medium">{item.price}</p>}
                           </div>
-                          <ChevronRight className="text-slate-300 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                          <ChevronRight className="text-slate-300 sm:group-hover:text-primary sm:group-hover:translate-x-1 transition-all" />
                         </motion.a>
                       ))
                     ) : (
@@ -319,7 +319,7 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
             className="fixed inset-0 bg-[#020617] z-[9999] flex flex-col items-center justify-center gap-8 lg:hidden"
           >
             <button 
-              className="absolute top-6 right-6 p-2 text-white hover:bg-white/10 rounded-full transition-colors"
+              className="absolute top-6 right-6 p-2 text-white sm:hover:bg-white/10 rounded-full transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               <X size={32} />
@@ -331,7 +331,7 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="text-3xl font-display font-bold text-white hover:text-primary transition-colors"
+                className="text-3xl font-display font-bold text-white sm:hover:text-primary transition-colors"
                 onClick={(e) => {
                   setMobileMenuOpen(false);
                   onNavigate(e, link.href, link.onClick);
@@ -384,35 +384,35 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-2xl bg-white rounded-[32px] shadow-2xl overflow-hidden"
+              className="relative w-full max-w-2xl bg-white rounded-[24px] sm:rounded-[32px] shadow-2xl overflow-y-auto max-h-[90vh] no-scrollbar"
             >
-              <div className="p-8 border-b border-slate-100 flex items-center justify-between bg-primary/5">
+              <div className="p-6 sm:p-8 border-b border-slate-100 flex items-center justify-between bg-primary/5 sticky top-0 z-10 backdrop-blur-md">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white">
-                    <LifeBuoy size={24} />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-xl sm:rounded-2xl flex items-center justify-center text-white">
+                    <LifeBuoy size={20} className="sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-secondary">FastNet Support</h3>
-                    <p className="text-sm text-slate-500 font-medium">How can we help you today?</p>
+                    <h3 className="text-lg sm:text-xl font-bold text-secondary">FastNet Support</h3>
+                    <p className="text-xs sm:text-sm text-slate-500 font-medium">How can we help you today?</p>
                   </div>
                 </div>
                 <button 
                   onClick={() => setSupportOpen(false)}
-                  className="p-2 hover:bg-white rounded-full transition-colors shadow-sm"
+                  className="p-2 sm:hover:bg-white rounded-full transition-colors shadow-sm"
                 >
-                  <X />
+                  <X size={20} />
                 </button>
               </div>
 
-              <div className="p-8 grid sm:grid-cols-2 gap-4">
+              <div className="p-6 sm:p-8 grid sm:grid-cols-2 gap-4">
                 <div 
                   onClick={() => {
                     setSupportOpen(false);
                     setView('topup');
                   }}
-                  className="p-6 rounded-2xl border border-slate-100 hover:border-primary/20 hover:bg-primary/[0.02] transition-all group cursor-pointer"
+                  className="p-6 rounded-2xl border border-slate-100 sm:hover:border-primary/20 sm:hover:bg-primary/[0.02] transition-all group cursor-pointer"
                 >
-                  <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 sm:group-hover:bg-primary sm:group-hover:text-white transition-all">
                     <MessageSquare size={20} />
                   </div>
                   <h4 className="font-bold mb-1">Live Chat</h4>
@@ -424,9 +424,9 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
 
                 <a 
                   href="tel:+250788000000"
-                  className="p-6 rounded-2xl border border-slate-100 hover:border-primary/20 hover:bg-primary/[0.02] transition-all group cursor-pointer"
+                  className="p-6 rounded-2xl border border-slate-100 sm:hover:border-primary/20 sm:hover:bg-primary/[0.02] transition-all group cursor-pointer"
                 >
-                  <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 sm:group-hover:bg-primary sm:group-hover:text-white transition-all">
                     <Headphones size={20} />
                   </div>
                   <h4 className="font-bold mb-1">Phone Support</h4>
@@ -438,9 +438,9 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
 
                 <a 
                   href="mailto:support@fastnet.rw"
-                  className="p-6 rounded-2xl border border-slate-100 hover:border-primary/20 hover:bg-primary/[0.02] transition-all group cursor-pointer"
+                  className="p-6 rounded-2xl border border-slate-100 sm:hover:border-primary/20 sm:hover:bg-primary/[0.02] transition-all group cursor-pointer"
                 >
-                  <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 sm:group-hover:bg-primary sm:group-hover:text-white transition-all">
                     <Mail size={20} />
                   </div>
                   <h4 className="font-bold mb-1">Email Support</h4>
@@ -452,9 +452,9 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
 
                 <div 
                   onClick={() => setSupportOpen(false)}
-                  className="p-6 rounded-2xl border border-slate-100 hover:border-primary/20 hover:bg-primary/[0.02] transition-all group cursor-pointer"
+                  className="p-6 rounded-2xl border border-slate-100 sm:hover:border-primary/20 sm:hover:bg-primary/[0.02] transition-all group cursor-pointer"
                 >
-                  <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 sm:group-hover:bg-primary sm:group-hover:text-white transition-all">
                     <ExternalLink size={20} />
                   </div>
                   <h4 className="font-bold mb-1">Knowledge Base</h4>
@@ -470,7 +470,7 @@ const Navbar = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
                   <Clock size={16} />
                   <span className="text-xs font-medium">Support available 24/7 for business clients</span>
                 </div>
-                <button className="text-xs font-bold text-secondary hover:underline">
+                <button className="text-xs font-bold text-secondary sm:hover:underline">
                   View Status Page
                 </button>
               </div>
@@ -574,7 +574,7 @@ const Hero = ({ setView }: { setView: (view: 'landing' | 'topup') => void }) => 
             <button 
               disabled={isLoading}
               onClick={handleGetStarted}
-              className="w-full sm:w-auto bg-primary text-white px-8 py-4 rounded-2xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-primary/30 transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto bg-primary text-white px-8 py-4 rounded-2xl font-bold text-base sm:text-lg sm:hover:shadow-2xl sm:hover:shadow-primary/30 transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <>
@@ -583,7 +583,7 @@ const Hero = ({ setView }: { setView: (view: 'landing' | 'topup') => void }) => 
                 </>
               ) : (
                 <>
-                  Get Started <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  Get Started <ArrowRight className="sm:group-hover:translate-x-1 transition-transform" />
                 </>
               )}
             </button>
@@ -592,13 +592,13 @@ const Hero = ({ setView }: { setView: (view: 'landing' | 'topup') => void }) => 
                 setView('landing');
                 window.location.hash = 'contact';
               }}
-              className="w-full sm:w-auto bg-white border border-slate-200 px-8 py-4 rounded-2xl font-bold text-base sm:text-lg hover:bg-slate-50 transition-all"
+              className="w-full sm:w-auto bg-white border border-slate-200 px-8 py-4 rounded-2xl font-bold text-base sm:text-lg sm:hover:bg-slate-50 transition-all"
             >
               Our Coverage
             </button>
           </div>
           
-          <div className="mt-12 flex items-center justify-center md:justify-start gap-4 sm:gap-8 opacity-60 grayscale hover:grayscale-0 transition-all">
+          <div className="mt-12 flex items-center justify-center md:justify-start gap-4 sm:gap-8 opacity-60 grayscale sm:hover:grayscale-0 transition-all">
             <div className="flex flex-col items-center md:items-start">
               <span className="text-xl sm:text-2xl font-bold">
                 500+
@@ -664,10 +664,10 @@ const About = () => {
               <img 
                 src="https://res.cloudinary.com/dcy26s9jm/image/upload/v1774435746/The_Future_Is_Here__AI_Web_Development_Business_Growth_jtu55c.jpg" 
                 alt="About FastNet"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover grayscale sm:group-hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 sm:group-hover:opacity-100 transition-opacity" />
             </div>
             <div className="absolute -bottom-4 -right-4 sm:-bottom-8 sm:-right-8 bg-primary text-white p-4 sm:p-8 rounded-3xl shadow-2xl max-w-[140px] sm:max-w-[240px]">
               <p className="text-2xl sm:text-4xl font-black mb-1 sm:mb-2">10+</p>
@@ -776,7 +776,7 @@ const Services = () => {
               }}
               onClick={() => setSelectedService(service)}
               className={cn(
-                "bg-white p-6 sm:p-10 rounded-[40px] shadow-sm sm:hover:shadow-2xl transition-all duration-300 group cursor-pointer",
+                "bg-white p-10 rounded-[40px] shadow-sm sm:hover:shadow-2xl transition-all duration-300 group cursor-pointer",
                 service.hoverBg
               )}
             >
@@ -815,31 +815,31 @@ const Services = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-2xl bg-white rounded-[40px] shadow-2xl overflow-hidden"
+              className="relative w-full max-w-2xl bg-white rounded-[24px] sm:rounded-[40px] shadow-2xl overflow-y-auto max-h-[90vh] no-scrollbar"
             >
               <button 
                 onClick={() => setSelectedService(null)}
-                className="absolute top-6 right-6 p-2 hover:bg-slate-100 rounded-full transition-colors"
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:hover:bg-slate-100 rounded-full transition-colors z-10 bg-white/80 backdrop-blur-sm"
               >
-                <X size={24} />
+                <X size={20} className="sm:w-6 sm:h-6" />
               </button>
               
               <div className="p-6 sm:p-12">
-                <div className="w-20 h-20 bg-slate-50 rounded-3xl flex items-center justify-center mb-8">
-                  {selectedService.icon}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-50 rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 sm:mb-8">
+                  {React.isValidElement(selectedService.icon) && React.cloneElement(selectedService.icon as React.ReactElement<any>, { size: 32 })}
                 </div>
-                <h3 className="text-3xl sm:text-4xl font-display font-bold mb-6">{selectedService.title}</h3>
-                <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                <h3 className="text-2xl sm:text-4xl font-display font-bold mb-4 sm:mb-6">{selectedService.title}</h3>
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 sm:mb-8">
                   {selectedService.description}
                 </p>
                 
                 <div className="space-y-4">
-                  <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">Key Offerings</p>
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <p className="text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-widest">Key Offerings</p>
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                     {selectedService.items.map((item) => (
-                      <div key={item} className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl">
-                        <CheckCircle2 className="text-primary shrink-0" size={18} />
-                        <span className="font-semibold text-sm">{item}</span>
+                      <div key={item} className="flex items-center gap-3 p-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl">
+                        <CheckCircle2 className="text-primary shrink-0" size={16} />
+                        <span className="font-semibold text-xs sm:text-sm">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -847,7 +847,7 @@ const Services = () => {
                 
                 <button 
                   onClick={() => setSelectedService(null)}
-                  className="w-full mt-10 py-5 rounded-2xl bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20"
+                  className="w-full mt-8 sm:mt-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl bg-primary text-white font-bold text-base sm:text-lg sm:hover:bg-primary/90 transition-all shadow-xl shadow-primary/20"
                 >
                   Close Details
                 </button>
@@ -944,8 +944,8 @@ const Pricing = () => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={cn(
-                  "px-3 sm:px-8 py-2.5 sm:py-3 rounded-xl text-[10px] sm:text-sm font-bold uppercase tracking-wider transition-all whitespace-nowrap",
-                  activeTab === tab ? "bg-white text-primary shadow-sm" : "text-slate-500 hover:text-slate-700"
+                  "px-4 sm:px-8 py-2.5 sm:py-3 rounded-xl text-[10px] sm:text-sm font-bold uppercase tracking-wider transition-all whitespace-nowrap",
+                  activeTab === tab ? "bg-white text-primary shadow-sm" : "text-slate-500 sm:hover:text-slate-700"
                 )}
               >
                 {tab === 'custom' ? 'Plan Estimator' : tab}
@@ -958,7 +958,7 @@ const Pricing = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto bg-slate-50 p-6 sm:p-12 rounded-[40px] border border-slate-200"
+            className="max-w-3xl mx-auto bg-slate-50 p-8 sm:p-12 rounded-[40px] border border-slate-200"
           >
             <div className="text-center mb-12">
               <h4 className="text-2xl font-display font-bold mb-2">Build Your Custom Fiber Plan</h4>
@@ -969,7 +969,7 @@ const Pricing = () => {
               <div className="space-y-6">
                 <div className="flex justify-between items-end">
                   <label className="text-sm font-bold uppercase tracking-widest text-slate-400">Bandwidth (Mbps)</label>
-                  <span className="text-4xl sm:text-5xl font-black text-primary">{customMbps}<span className="text-xl font-bold text-slate-400 ml-1">Mbps</span></span>
+                  <span className="text-5xl font-black text-primary">{customMbps}<span className="text-xl font-bold text-slate-400 ml-1">Mbps</span></span>
                 </div>
                 <input 
                   type="range" 
@@ -997,9 +997,9 @@ const Pricing = () => {
                 </div>
                 <button 
                   onClick={handleRequestQuote}
-                  className="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-primary/30 transition-all flex items-center justify-center gap-2 group"
+                  className="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-2xl font-bold text-lg sm:hover:shadow-2xl sm:hover:shadow-primary/30 transition-all flex items-center justify-center gap-2 group"
                 >
-                  Request Quote <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  Request Quote <ArrowRight className="sm:group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
@@ -1012,7 +1012,7 @@ const Pricing = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: idx * 0.05 }}
-                className="group p-6 sm:p-8 rounded-[32px] border border-slate-100 sm:hover:border-primary/20 sm:hover:bg-primary/[0.02] transition-all relative overflow-hidden"
+                className="group p-8 rounded-[32px] border border-slate-100 sm:hover:border-primary/20 sm:hover:bg-primary/[0.02] transition-all relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-[100px] -mr-12 -mt-12 sm:group-hover:scale-150 transition-transform" />
                 {plan.category && (
@@ -1028,7 +1028,7 @@ const Pricing = () => {
                 </div>
                 <button 
                   onClick={handleSubscribe}
-                  className="w-full py-4 rounded-2xl bg-primary text-white sm:bg-slate-50 sm:text-slate-900 font-bold sm:hover:bg-primary sm:hover:text-white transition-all"
+                  className="w-full py-4 rounded-2xl bg-primary text-white font-bold sm:hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
                 >
                   Subscribe Now
                 </button>
@@ -1100,7 +1100,7 @@ const Testimonials = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="bg-white p-6 sm:p-12 rounded-[40px] shadow-xl border border-slate-100 flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full"
+                className="bg-white p-8 sm:p-12 rounded-[40px] shadow-xl border border-slate-100 flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full"
               >
                 <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden shrink-0 border-4 border-primary/10">
                   <img 
@@ -1127,13 +1127,13 @@ const Testimonials = () => {
           <div className="flex justify-center gap-4 mt-8">
             <button 
               onClick={prev}
-              className="p-4 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
+              className="p-4 rounded-full bg-white border border-slate-200 text-slate-600 sm:hover:bg-primary sm:hover:text-white sm:hover:border-primary transition-all shadow-lg"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={next}
-              className="p-4 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
+              className="p-4 rounded-full bg-white border border-slate-200 text-slate-600 sm:hover:bg-primary sm:hover:text-white sm:hover:border-primary transition-all shadow-lg"
             >
               <ChevronRight size={24} />
             </button>
@@ -1173,7 +1173,7 @@ const RecenterButton = ({ center }: { center: [number, number] }) => {
         map.setView(center, 9);
         map.invalidateSize();
       }}
-      className="absolute bottom-20 right-6 z-[1000] w-10 h-10 bg-white/10 hover:bg-primary backdrop-blur-md rounded-xl flex items-center justify-center text-white transition-all border border-white/10"
+      className="absolute bottom-20 right-6 z-[1000] w-10 h-10 bg-white/10 sm:hover:bg-primary backdrop-blur-md rounded-xl flex items-center justify-center text-white transition-all border border-white/10"
       title="Recenter Map"
     >
       <RotateCcw size={18} />
@@ -1358,14 +1358,53 @@ const Contact = () => {
   const sectionRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({ name: '', email: '' });
+  const [touched, setTouched] = useState({ name: false, email: false });
+
+  const validateField = (name: string, value: string) => {
+    let error = '';
+    if (name === 'name') {
+      if (value.trim().length < 2) error = 'Name must be at least 2 characters';
+    } else if (name === 'email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) error = 'Please enter a valid email address';
+    }
+    setErrors(prev => ({ ...prev, [name]: error }));
+    return error === '';
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (touched[name as keyof typeof touched]) {
+      validateField(name, value);
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+    validateField(name, value);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const isNameValid = validateField('name', formData.name);
+    const isEmailValid = validateField('email', formData.email);
+    setTouched({ name: true, email: true });
+
+    if (!isNameValid || !isEmailValid) return;
+
     setIsSubmitting(true);
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
+      setTouched({ name: false, email: false });
+      setErrors({ name: '', email: '' });
       setTimeout(() => setIsSuccess(false), 5000);
     }, 1500);
   };
@@ -1403,7 +1442,7 @@ const Contact = () => {
             className="text-center lg:text-left"
           >
             <h2 className="text-sm font-bold text-secondary uppercase tracking-[0.3em] mb-4">Connect With Us</h2>
-            <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold mb-12 leading-tight">
+            <h3 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-12 leading-tight">
               Ready to Get <span className="text-primary">Connected?</span>
             </h3>
             
@@ -1460,7 +1499,7 @@ const Contact = () => {
                   <p className="text-slate-400">Thank you for reaching out. Our team will get back to you shortly.</p>
                   <button 
                     onClick={() => setIsSuccess(false)}
-                    className="mt-8 text-primary font-bold hover:underline"
+                    className="mt-8 text-primary font-bold sm:hover:underline"
                   >
                     Send another message
                   </button>
@@ -1470,20 +1509,60 @@ const Contact = () => {
                   <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-400">Full Name</label>
-                      <input required type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-sm sm:text-base" placeholder="John Doe" />
+                      <input 
+                        required 
+                        type="text" 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        onBlur={handleBlur}
+                        className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-all text-sm sm:text-base ${
+                          touched.name && errors.name 
+                            ? 'border-red-500/50 focus:border-red-500 bg-red-500/5' 
+                            : 'border-white/10 focus:border-primary'
+                        }`} 
+                        placeholder="John Doe" 
+                      />
+                      {touched.name && errors.name && (
+                        <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider">{errors.name}</p>
+                      )}
                     </div>
                     <div className="space-y-2">
                       <label className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-400">Email Address</label>
-                      <input required type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-sm sm:text-base" placeholder="john@example.com" />
+                      <input 
+                        required 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        onBlur={handleBlur}
+                        className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-all text-sm sm:text-base ${
+                          touched.email && errors.email 
+                            ? 'border-red-500/50 focus:border-red-500 bg-red-500/5' 
+                            : 'border-white/10 focus:border-primary'
+                        }`} 
+                        placeholder="john@example.com" 
+                      />
+                      {touched.email && errors.email && (
+                        <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider">{errors.email}</p>
+                      )}
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-400">Message</label>
-                    <textarea required rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-sm sm:text-base" placeholder="How can we help you?" />
+                    <textarea 
+                      required 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      rows={4} 
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-sm sm:text-base" 
+                      placeholder="How can we help you?" 
+                    />
                   </div>
                   <button 
                     disabled={isSubmitting}
-                    className="w-full py-4 sm:py-5 rounded-2xl bg-primary text-white font-bold text-base sm:text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-70"
+                    className="w-full py-4 sm:py-5 rounded-2xl bg-primary text-white font-bold text-base sm:text-lg sm:hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-70"
                   >
                     {isSubmitting ? <Loader2 className="animate-spin" /> : null}
                     {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -1527,17 +1606,17 @@ const Footer = ({ setView, onNavigate }: { setView: (view: 'landing' | 'topup') 
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <a href="#" onClick={(e) => onNavigate(e, '#', () => setView('landing'))} className="text-sm text-slate-400 hover:text-white transition-colors">Home</a>
-            <a href="#about" onClick={(e) => onNavigate(e, '#about', () => setView('landing'))} className="text-sm text-slate-400 hover:text-white transition-colors">About</a>
-            <a href="#services" onClick={(e) => onNavigate(e, '#services', () => setView('landing'))} className="text-sm text-slate-400 hover:text-white transition-colors">Services</a>
-            <a href="#pricing" onClick={(e) => onNavigate(e, '#pricing', () => setView('landing'))} className="text-sm text-slate-400 hover:text-white transition-colors">Pricing</a>
-            <a href="#contact" onClick={(e) => onNavigate(e, '#contact', () => setView('landing'))} className="text-sm text-slate-400 hover:text-white transition-colors">Contact</a>
+            <a href="#" onClick={(e) => onNavigate(e, '#', () => setView('landing'))} className="text-sm text-slate-400 sm:hover:text-white transition-colors">Home</a>
+            <a href="#about" onClick={(e) => onNavigate(e, '#about', () => setView('landing'))} className="text-sm text-slate-400 sm:hover:text-white transition-colors">About</a>
+            <a href="#services" onClick={(e) => onNavigate(e, '#services', () => setView('landing'))} className="text-sm text-slate-400 sm:hover:text-white transition-colors">Services</a>
+            <a href="#pricing" onClick={(e) => onNavigate(e, '#pricing', () => setView('landing'))} className="text-sm text-slate-400 sm:hover:text-white transition-colors">Pricing</a>
+            <a href="#contact" onClick={(e) => onNavigate(e, '#contact', () => setView('landing'))} className="text-sm text-slate-400 sm:hover:text-white transition-colors">Contact</a>
           </div>
 
           <div className="flex items-center gap-6">
-            <a href="#" aria-label="Facebook" className="text-slate-400 hover:text-white transition-colors"><Facebook size={20} /></a>
-            <a href="#" aria-label="Twitter" className="text-slate-400 hover:text-white transition-colors"><Twitter size={20} /></a>
-            <a href="#" aria-label="Instagram" className="text-slate-400 hover:text-white transition-colors"><Instagram size={20} /></a>
+            <a href="#" aria-label="Facebook" className="text-slate-400 sm:hover:text-white transition-colors"><Facebook size={20} /></a>
+            <a href="#" aria-label="Twitter" className="text-slate-400 sm:hover:text-white transition-colors"><Twitter size={20} /></a>
+            <a href="#" aria-label="Instagram" className="text-slate-400 sm:hover:text-white transition-colors"><Instagram size={20} /></a>
           </div>
         </div>
         
@@ -1628,7 +1707,7 @@ const TopUpPage = ({ setView }: { setView: (view: 'landing' | 'topup') => void }
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white p-6 sm:p-12 rounded-[40px] shadow-xl border border-slate-100"
+            className="bg-white p-8 sm:p-12 rounded-[40px] shadow-xl border border-slate-100"
           >
             <div className="flex items-center gap-4 mb-8">
               <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
@@ -1674,7 +1753,7 @@ const TopUpPage = ({ setView }: { setView: (view: 'landing' | 'topup') => void }
               <button 
                 type="submit"
                 disabled={isToppingUp}
-                className="w-full py-5 rounded-2xl bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-70"
+                className="w-full py-5 rounded-2xl bg-primary text-white font-bold text-lg sm:hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-70"
               >
                 {isToppingUp ? <Loader2 className="animate-spin" /> : <ArrowRight />}
                 {isToppingUp ? 'Processing...' : 'Top Up Now'}
@@ -1708,7 +1787,7 @@ const TopUpPage = ({ setView }: { setView: (view: 'landing' | 'topup') => void }
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-slate-900 p-6 sm:p-12 rounded-[40px] shadow-2xl border border-white/10 flex flex-col h-[600px] lg:h-auto"
+            className="bg-slate-900 p-8 sm:p-12 rounded-[40px] shadow-2xl border border-white/10 flex flex-col h-[600px] lg:h-auto"
           >
             <div className="flex items-center gap-4 mb-8">
               <div className="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary">
@@ -1758,7 +1837,7 @@ const TopUpPage = ({ setView }: { setView: (view: 'landing' | 'topup') => void }
               />
               <button 
                 type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center hover:bg-primary/90 transition-all"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center sm:hover:bg-primary/90 transition-all"
               >
                 <Send size={20} />
               </button>
@@ -1769,7 +1848,7 @@ const TopUpPage = ({ setView }: { setView: (view: 'landing' | 'topup') => void }
         <div className="mt-12 text-center">
           <button 
             onClick={() => setView('landing')}
-            className="text-slate-500 hover:text-primary font-bold flex items-center gap-2 mx-auto transition-colors"
+            className="text-slate-500 sm:hover:text-primary font-bold flex items-center gap-2 mx-auto transition-colors"
           >
             <ChevronLeft size={20} /> Back to Home
           </button>
