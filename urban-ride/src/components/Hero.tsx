@@ -64,35 +64,48 @@ export const Hero = () => {
           transition={{ duration: 1.5, ease: "easeOut" }}
           src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=2000"
           alt="Luxury Car"
-          className="w-full h-full object-cover opacity-90"
+          className="w-full h-full object-cover opacity-100"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-white/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white/50" />
       </div>
 
       <div className="max-w-[1440px] mx-auto w-full relative z-10 flex flex-col items-center text-center mt-0 lg:mt-[-8vh]">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="mb-16"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.2, delayChildren: 0.1 } }
+          }}
+          className="mb-16 flex flex-col items-center"
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+          <motion.span 
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}
+            className="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold uppercase tracking-[0.3em] mb-6"
+          >
             Kigali's Premier Fleet
-          </span>
-          <h1 className="text-6xl md:text-9xl font-display font-medium tracking-tighter mb-6 text-white drop-shadow-lg">
+          </motion.span>
+          <motion.h1 
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}
+            className="text-6xl md:text-9xl font-display font-medium tracking-tighter mb-6 text-white drop-shadow-lg"
+          >
             Urban <span className="font-light italic text-white/90">Ride</span>
-          </h1>
-          <p className="text-lg md:text-xl font-medium tracking-wide text-white/90 max-w-2xl mx-auto drop-shadow-md mb-8">
+          </motion.h1>
+          <motion.p 
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}
+            className="text-lg md:text-xl font-medium tracking-wide text-white/90 max-w-2xl mx-auto drop-shadow-md mb-8"
+          >
             Experience luxury mobility redefined. <br className="hidden md:block" />
             Premium chauffeur services tailored for you.
-          </p>
-          <button 
+          </motion.p>
+          <motion.button 
+            variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1, transition: { type: "spring", bounce: 0.6 } } }}
             onClick={scrollToForm}
             className="bg-white text-black px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-white/90 transition-colors shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
           >
             Book a Ride
-          </button>
+          </motion.button>
         </motion.div>
       </div>
 
@@ -110,9 +123,9 @@ export const Hero = () => {
       {/* Floating Search Form */}
       <div id="booking-form" className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[35%] lg:translate-y-1/2 w-full max-w-6xl px-4 lg:px-6 z-20">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, delay: 0.6, type: "spring", bounce: 0.3 }}
           className="bg-white/80 backdrop-blur-3xl rounded-[32px] lg:rounded-full p-2 lg:p-3 border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)]"
         >
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-2">

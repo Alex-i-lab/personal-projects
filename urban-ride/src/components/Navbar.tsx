@@ -20,7 +20,7 @@ export const Navbar = () => {
         'fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:-translate-x-1/2 md:w-[85vw] max-w-[1200px] z-50 transition-all duration-500 px-5 py-2 md:px-10 md:py-3 rounded-full',
         isScrolled 
           ? 'bg-white/90 backdrop-blur-xl shadow-lg border border-black/5 text-black' 
-          : 'bg-black/20 backdrop-blur-md border border-white/10 text-white'
+          : 'bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg text-white'
       )}
     >
       <div className="flex items-center justify-between w-full">

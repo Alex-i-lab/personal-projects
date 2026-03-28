@@ -41,6 +41,16 @@ const testimonials = [
   }
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, type: "spring", bounce: 0.4 } }
+};
+
 export const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
@@ -70,16 +80,28 @@ export const Testimonials = () => {
 
   return (
     <section ref={sectionRef} id="testimonials" className="py-32 px-6 md:px-12 max-w-[1440px] mx-auto overflow-hidden">
-      <div className="mb-20 text-center">
-        <span className="inline-block py-1 px-3 rounded-full bg-black/5 border border-black/10 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+        className="mb-20 text-center"
+      >
+        <motion.span variants={itemVariants} className="inline-block py-1 px-3 rounded-full bg-black/5 border border-black/10 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
           Client Experiences
-        </span>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight">
+        </motion.span>
+        <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight">
           Words from our <span className="text-black/40 italic font-light">clients.</span>
-        </h2>
-      </div>
+        </motion.h2>
+      </motion.div>
 
-      <div className="relative max-w-4xl mx-auto">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.3 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="relative max-w-4xl mx-auto"
+      >
         {/* Quote Icon Background */}
         <motion.div 
           className="absolute -top-10 -left-2 md:-left-12 text-black/5 z-0 pointer-events-none"
@@ -147,7 +169,7 @@ export const Testimonials = () => {
             <ChevronRight size={20} />
           </button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,12 +1,29 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight } from 'lucide-react';
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.3 } }
+};
 
 export const Footer = () => {
   return (
-    <footer className="bg-white text-black pt-32 pb-16 px-6 md:px-12 border-t border-gray-100">
-      <div className="max-w-[1440px] mx-auto">
+    <footer className="bg-white text-black pt-32 pb-16 px-6 md:px-12 border-t border-gray-100 overflow-hidden">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={containerVariants}
+        className="max-w-[1440px] mx-auto"
+      >
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-32">
-          <div className="col-span-2 lg:col-span-2 space-y-8">
+          <motion.div variants={itemVariants} className="col-span-2 lg:col-span-2 space-y-8">
             <a href="/" className="text-2xl font-display font-bold tracking-tight">
               URBAN <span className="font-light">RIDE</span>
             </a>
@@ -23,9 +40,9 @@ export const Footer = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={itemVariants}>
             <h4 className="text-[11px] uppercase tracking-[0.2em] font-bold opacity-30 mb-8">Network</h4>
             <ul className="space-y-4 text-[14px] font-medium">
               <li><a href="#" className="hover:opacity-50 transition-opacity">Kigali</a></li>
@@ -33,9 +50,9 @@ export const Footer = () => {
               <li><a href="#" className="hover:opacity-50 transition-opacity">Musanze</a></li>
               <li><a href="#" className="hover:opacity-50 transition-opacity">Butare</a></li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={itemVariants}>
             <h4 className="text-[11px] uppercase tracking-[0.2em] font-bold opacity-30 mb-8">Services</h4>
             <ul className="space-y-4 text-[14px] font-medium">
               <li><a href="#" className="hover:opacity-50 transition-opacity">Corporate</a></li>
@@ -43,9 +60,9 @@ export const Footer = () => {
               <li><a href="#" className="hover:opacity-50 transition-opacity">Events</a></li>
               <li><a href="#" className="hover:opacity-50 transition-opacity">Private</a></li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={itemVariants}>
             <h4 className="text-[11px] uppercase tracking-[0.2em] font-bold opacity-30 mb-8">Company</h4>
             <ul className="space-y-4 text-[14px] font-medium">
               <li><a href="#" className="hover:opacity-50 transition-opacity">About</a></li>
@@ -53,10 +70,10 @@ export const Footer = () => {
               <li><a href="#" className="hover:opacity-50 transition-opacity">Legal</a></li>
               <li><a href="#" className="hover:opacity-50 transition-opacity">Privacy</a></li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+        <motion.div variants={itemVariants} className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-[11px] font-medium opacity-30 tracking-wide">
             © 2026 URBAN RIDE. ALL RIGHTS RESERVED.
           </p>
@@ -66,8 +83,8 @@ export const Footer = () => {
             <a href="#" className="hover:opacity-50 transition-opacity"><Instagram size={18} /></a>
             <a href="#" className="hover:opacity-50 transition-opacity"><Youtube size={18} /></a>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </footer>
   );
 };

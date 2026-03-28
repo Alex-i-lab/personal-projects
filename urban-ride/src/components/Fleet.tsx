@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Users, Fuel, Gauge, Zap, Check, Search, Filter, SlidersHorizontal, ChevronLeft, ChevronRight, Star, Heart, Info } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
+import { useCurrency } from '../context/CurrencyContext';
 
 const categories = ['ALL', 'SEDAN', 'LUXURY', 'SUV', 'VAN'];
 const capacities = ['ANY', '4', '5', '7', '9+'];
@@ -368,6 +369,7 @@ const CarCarousel = ({ images, name, className }: { images: string[], name: stri
 };
 
 export const Fleet = () => {
+  const { formatPrice } = useCurrency();
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('ANY');
@@ -409,7 +411,13 @@ export const Fleet = () => {
   return (
     <section id="fleet" className="py-32 bg-muted/30">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-        <div className="mb-24 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-24 text-center"
+        >
           <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-12">The Fleet</h2>
           
           <div className="max-w-6xl mx-auto space-y-8">
@@ -502,19 +510,19 @@ export const Fleet = () => {
               )}
             </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
           <AnimatePresence mode="popLayout">
-            {currentCars.map((car) => (
+            {currentCars.map((car, i) => (
               <motion.div
                 key={car.id}
                 layout
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -20 }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.6, delay: i * 0.05, type: "spring", bounce: 0.3 }}
                 onClick={() => setSelectedCar(car)}
                 className="bg-white rounded-2xl md:rounded-3xl overflow-hidden flex flex-col group cursor-pointer shadow-sm hover:shadow-xl border border-black/5 transition-all duration-500 relative"
               >
@@ -559,7 +567,7 @@ export const Fleet = () => {
                       <p className="text-[9px] md:text-[12px] text-black/40 font-medium tracking-widest uppercase">{car.category}</p>
                     </div>
                     <div className="sm:text-right">
-                      <p className="text-sm md:text-lg font-medium">{car.price}</p>
+                      <p className="text-sm md:text-lg font-medium">{formatPrice(parseInt(car.price.match(/\d+/)?.[0] || '0'))}</p>
                       <div className="flex items-center sm:justify-end gap-1 mt-0.5 md:mt-1">
                         <Star size={10} className="fill-black text-black md:w-3 md:h-3" />
                         <span className="text-[9px] md:text-[11px] font-bold">{car.rating}</span>
@@ -768,7 +776,7 @@ export const Fleet = () => {
                     </div>
                     <div>
                       <p className="text-[9px] font-bold uppercase tracking-widest text-black/30">Rate</p>
-                      <p className="text-xs md:text-sm font-medium">{selectedCar.price}</p>
+                      <p className="text-xs md:text-sm font-medium">{formatPrice(parseInt(selectedCar.price.match(/\d+/)?.[0] || '0'))}</p>
                     </div>
                   </div>
                 </div>
