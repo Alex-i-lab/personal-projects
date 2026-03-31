@@ -690,7 +690,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               initial={{ opacity: 0, scale: 0.9, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 40 }}
-              className="fixed inset-0 m-auto w-[95%] max-w-2xl h-fit max-h-[90vh] bg-white z-[130] rounded-[32px] overflow-hidden flex flex-col shadow-2xl"
+              className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-auto md:w-full md:max-w-2xl h-auto md:h-fit max-h-[90vh] md:max-h-[85vh] bg-white z-[130] rounded-[32px] overflow-hidden flex flex-col shadow-2xl"
             >
               <div className="p-8 sm:p-12 border-b border-black/5 flex justify-between items-center">
                 <h3 className="font-serif text-3xl uppercase tracking-tight">Checkout</h3>
