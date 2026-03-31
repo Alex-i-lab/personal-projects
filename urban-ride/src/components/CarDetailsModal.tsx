@@ -31,40 +31,41 @@ export const CarDetailsModal: React.FC<CarDetailsModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-6">
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 backdrop-blur-md"
       />
       <motion.div 
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        className="relative bg-white w-full max-w-5xl rounded-[40px] overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
+        initial={{ opacity: 0, y: "100%" }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: "100%" }}
+        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+        className="relative bg-white w-full max-w-5xl rounded-t-[40px] sm:rounded-[40px] overflow-hidden shadow-2xl flex flex-col md:flex-row h-[92vh] sm:h-auto sm:max-h-[90vh]"
       >
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-lg"
+          className="absolute top-6 right-6 z-30 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-lg sm:shadow-xl"
         >
           <X size={24} />
         </button>
 
         {/* Left: Image Carousel */}
-        <div className="w-full md:w-1/2 h-[300px] md:h-auto relative bg-muted/30">
+        <div className="w-full md:w-1/2 h-[40vh] sm:h-[450px] md:h-auto relative bg-muted/10 shrink-0">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.img
               key={currentIndex}
               src={car.images[currentIndex]}
               alt={car.name}
               custom={direction}
-              initial={{ opacity: 0, x: direction * 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -direction * 50 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="absolute inset-0 w-full h-full object-contain p-8"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0 w-full h-full object-contain p-4 md:p-12"
             />
           </AnimatePresence>
 
@@ -100,7 +101,7 @@ export const CarDetailsModal: React.FC<CarDetailsModalProps> = ({
         </div>
 
         {/* Right: Content */}
-        <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto">
+        <div className="w-full md:w-1/2 p-6 sm:p-10 md:p-12 overflow-y-auto bg-white">
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <span className="inline-block bg-black text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
@@ -161,8 +162,8 @@ export const CarDetailsModal: React.FC<CarDetailsModalProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-8 border-t border-black/5">
-            <div>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-black/5 mt-auto">
+            <div className="text-center sm:text-left">
               <p className="text-[10px] font-bold uppercase tracking-widest text-black/40">Daily Rate</p>
               <span className="text-3xl font-display font-medium">{car.price}</span>
             </div>
@@ -171,7 +172,7 @@ export const CarDetailsModal: React.FC<CarDetailsModalProps> = ({
                 onBook(car.id);
                 onClose();
               }}
-              className="px-10 py-4 bg-black text-white rounded-2xl font-bold uppercase tracking-widest text-xs hover:opacity-80 transition-all shadow-xl shadow-black/20"
+              className="w-full sm:w-auto px-10 py-4 bg-black text-white rounded-2xl font-bold uppercase tracking-widest text-xs hover:opacity-80 transition-all shadow-xl shadow-black/20"
             >
               Book This Car
             </button>
