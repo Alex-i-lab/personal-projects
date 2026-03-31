@@ -55,6 +55,27 @@ export const Hero = ({ onBookNow }: { onBookNow?: () => void }) => {
     <section className="relative min-h-[100svh] lg:min-h-[95vh] flex flex-col items-center justify-center pt-32 lg:pt-20 pb-[280px] lg:pb-0 px-6 overflow-visible">
       {/* Background Image / Product Shot */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+        {/* Style tag to hide native video controls globally for this component */}
+        <style>
+          {`
+            video::-webkit-media-controls {
+              display:none !important;
+              -webkit-appearance: none;
+            }
+            video::-webkit-media-controls-enclosure {
+              display:none !important;
+              -webkit-appearance: none;
+            }
+            video::-webkit-media-controls-panel {
+              display:none !important;
+              -webkit-appearance: none;
+            }
+            video::-webkit-media-controls-start-playback-button {
+              display:none !important;
+              -webkit-appearance: none;
+            }
+          `}
+        </style>
         <motion.video
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -64,8 +85,9 @@ export const Hero = ({ onBookNow }: { onBookNow?: () => void }) => {
           muted
           playsInline
           preload="metadata"
+          controls={false}
           poster="https://res.cloudinary.com/dcy26s9jm/video/upload/v1774958725/Animate_image_looped_202603311359_agptom.jpg"
-          className="w-full h-full object-cover opacity-90"
+          className="w-full h-full object-cover opacity-90 pointer-events-none select-none"
         >
           <source src="https://res.cloudinary.com/dcy26s9jm/video/upload/v1774958725/Animate_image_looped_202603311359_agptom.mp4" type="video/mp4" />
         </motion.video>
