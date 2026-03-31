@@ -35,7 +35,14 @@ export const Brands = () => {
                 key={`${brand.name}-${idx}`} 
                 className="flex items-center justify-center w-32 h-16 opacity-40 hover:opacity-100 transition-opacity duration-300"
               >
-                <img src={brand.url} alt={brand.name} className="max-h-12 max-w-full object-contain" referrerPolicy="no-referrer" />
+                <img 
+                  src={brand.url} 
+                  alt={brand.name} 
+                  loading="lazy"
+                  decoding="async"
+                  className="max-h-12 max-w-full object-contain" 
+                  referrerPolicy="no-referrer" 
+                />
               </motion.div>
             ))}
           </div>

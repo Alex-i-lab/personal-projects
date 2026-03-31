@@ -63,6 +63,7 @@ export const Hero = ({ onBookNow }: { onBookNow?: () => void }) => {
           loop
           muted
           playsInline
+          preload="metadata"
           poster="https://res.cloudinary.com/dcy26s9jm/video/upload/v1774958725/Animate_image_looped_202603311359_agptom.jpg"
           className="w-full h-full object-cover opacity-90"
         >

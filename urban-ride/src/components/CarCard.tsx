@@ -1,25 +1,52 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Users, Zap, Fuel, Star, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
+import { cn, formatCurrency } from '@/src/lib/utils';
 import { Car } from '../types';
+import { Skeleton } from './Skeleton';
 
 interface CarCardProps {
-  car: Car;
-  isFavorite: boolean;
-  onToggleFavorite: (id: number) => void;
-  onSelect: (car: Car) => void;
-  onBook: (id: number) => void;
+  car?: Car;
+  isFavorite?: boolean;
+  onToggleFavorite?: (id: number) => void;
+  onSelect?: (car: Car) => void;
+  onBook?: (id: number) => void;
+  loading?: boolean;
 }
 
 export const CarCard: React.FC<CarCardProps> = ({ 
   car, 
-  isFavorite, 
-  onToggleFavorite, 
-  onSelect, 
-  onBook 
+  isFavorite = false, 
+  onToggleFavorite = (_id: number) => {}, 
+  onSelect = (_car: Car) => {}, 
+  onBook = (_id: number) => {},
+  loading = false
 }) => {
   const [currentImg, setCurrentImg] = useState(0);
+
+  if (loading || !car) {
+    return (
+      <div className="bg-white rounded-[32px] overflow-hidden border border-black/5 flex flex-col h-full animate-pulse">
+        <Skeleton className="aspect-[16/10] rounded-none" />
+        <div className="p-6 space-y-6">
+          <div className="flex justify-between">
+            <div className="space-y-2">
+              <Skeleton className="h-6 w-32" />
+              <Skeleton className="h-3 w-20" />
+            </div>
+            <Skeleton className="h-8 w-16" />
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            {[1, 2, 3, 4].map(i => <Skeleton key={i} className="h-10 rounded-2xl" />)}
+          </div>
+          <div className="flex gap-3">
+            <Skeleton className="flex-1 h-12 rounded-2xl" />
+            <Skeleton className="flex-1 h-12 rounded-2xl" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const nextImg = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -49,6 +76,8 @@ export const CarCard: React.FC<CarCardProps> = ({
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             onClick={() => onSelect(car)}
           />
@@ -119,7 +148,7 @@ export const CarCard: React.FC<CarCardProps> = ({
             </div>
           </div>
           <div className="text-right">
-            <span className="text-2xl font-display font-medium text-black">{car.price}</span>
+            <span className="text-2xl font-display font-medium text-black">{formatCurrency(parseInt(car.price.replace(/[^0-9]/g, '')))}</span>
             <p className="text-[10px] font-bold uppercase tracking-widest text-black/30">/ Day</p>
           </div>
         </div>

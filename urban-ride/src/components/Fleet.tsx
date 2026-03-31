@@ -20,7 +20,14 @@ export const Fleet = ({ onBookCar }: { onBookCar?: (carId: number) => void }) =>
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [favorites, setFavorites] = useState<number[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
   const itemsPerPage = 6;
+
+  // Simulate loading on mount
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleFavorite = (id: number) => {
     setFavorites(prev => 
@@ -172,16 +179,23 @@ export const Fleet = ({ onBookCar }: { onBookCar?: (carId: number) => void }) =>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative">
           <AnimatePresence mode="popLayout">
-            {currentCars.map((car) => (
-              <CarCard
-                key={car.id}
-                car={car}
-                isFavorite={favorites.includes(car.id)}
-                onToggleFavorite={toggleFavorite}
-                onSelect={setSelectedCar}
-                onBook={(id) => onBookCar?.(id)}
-              />
-            ))}
+            {isLoading ? (
+              // Render 6 skeletons while loading
+              Array.from({ length: 6 }).map((_, i) => (
+                <CarCard key={`skeleton-${i}`} loading={true} />
+              ))
+            ) : (
+              currentCars.map((car) => (
+                <CarCard
+                  key={car.id}
+                  car={car}
+                  isFavorite={favorites.includes(car.id)}
+                  onToggleFavorite={toggleFavorite}
+                  onSelect={setSelectedCar}
+                  onBook={(id) => onBookCar?.(id)}
+                />
+              ))
+            )}
           </AnimatePresence>
         </div>
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, Calendar, MapPin, CreditCard, CheckCircle, Car as CarIcon, Clock, Info, Plus, Trash2, Smartphone, Building2, Wallet } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
+import { cn, calculateDistance, formatCurrency } from '@/src/lib/utils';
 import { cars } from '../data/cars';
 import { Car } from '../types';
 import { MapSelector } from './MapSelector';
@@ -53,17 +53,6 @@ export const BookingPage: React.FC<BookingPageProps> = ({
     setFormData(prev => ({ ...prev, dropoff: '' }));
   }, [bookingType]);
 
-  const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
-    const R = 6371; // Radius of the earth in km
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const a = 
-      Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
-      Math.sin(dLon/2) * Math.sin(dLon/2); 
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-    return R * c; // Distance in km
-  };
 
   const getEstimatedPrice = () => {
     if (selectedCarsData.length === 0) return 0;
@@ -535,7 +524,7 @@ export const BookingPage: React.FC<BookingPageProps> = ({
                   </div>
                   <div className="flex justify-between items-center pt-4 border-t border-black/10">
                     <span className="font-bold">Total Estimated</span>
-                    <span className="text-xl font-display font-medium">${getEstimatedPrice()}</span>
+                    <span className="text-xl font-display font-medium">{formatCurrency(getEstimatedPrice())}</span>
                   </div>
                 </div>
 

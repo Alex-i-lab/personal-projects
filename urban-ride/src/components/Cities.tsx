@@ -37,6 +37,8 @@ export const Cities = () => {
             <img
               src={city.image}
               alt={city.name}
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110"
               referrerPolicy="no-referrer"
             />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -9,8 +9,10 @@ import { Fleet } from './components/Fleet';
 import { Testimonials } from './components/Testimonials';
 import { Cities } from './components/Cities';
 import { Footer } from './components/Footer';
-import { BookingPage } from './components/BookingPage';
 import { WhatsAppButton } from './components/WhatsAppButton';
+
+// Lazy loading the booking page
+const BookingPage = lazy(() => import('./components/BookingPage').then(module => ({ default: module.BookingPage })));
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'booking'>('home');
@@ -55,12 +57,21 @@ export default function App() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
           >
-            <BookingPage 
-              onBack={navigateHome} 
-              selectedCars={selectedCars} 
-              onAddAnotherCar={handleAddAnotherCar}
-              onRemoveCar={(instanceId) => setSelectedCars(prev => prev.filter(car => car.instanceId !== instanceId))}
-            />
+            <Suspense fallback={
+              <div className="min-h-screen flex items-center justify-center bg-white">
+                <div className="flex flex-col items-center gap-4">
+                  <div className="w-12 h-12 border-4 border-black/5 border-t-black rounded-full animate-spin" />
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-black/40">Preparing Booking</p>
+                </div>
+              </div>
+            }>
+              <BookingPage 
+                onBack={navigateHome} 
+                selectedCars={selectedCars} 
+                onAddAnotherCar={handleAddAnotherCar}
+                onRemoveCar={(instanceId) => setSelectedCars(prev => prev.filter(car => car.instanceId !== instanceId))}
+              />
+            </Suspense>
           </motion.div>
         ) : (
           <motion.div
