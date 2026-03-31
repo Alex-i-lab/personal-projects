@@ -41,16 +41,6 @@ const testimonials = [
   }
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.2 } }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, type: "spring", bounce: 0.4 } }
-};
-
 export const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
@@ -81,27 +71,21 @@ export const Testimonials = () => {
   return (
     <section ref={sectionRef} id="testimonials" className="py-32 px-6 md:px-12 max-w-[1440px] mx-auto overflow-hidden">
       <motion.div 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
         className="mb-20 text-center"
       >
-        <motion.span variants={itemVariants} className="inline-block py-1 px-3 rounded-full bg-black/5 border border-black/10 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+        <span className="inline-block py-1 px-3 rounded-full bg-black/5 border border-black/10 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
           Client Experiences
-        </motion.span>
-        <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight">
+        </span>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight">
           Words from our <span className="text-black/40 italic font-light">clients.</span>
-        </motion.h2>
+        </h2>
       </motion.div>
 
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.3 }}
-        viewport={{ once: true, margin: "-100px" }}
-        className="relative max-w-4xl mx-auto"
-      >
+      <div className="relative max-w-4xl mx-auto">
         {/* Quote Icon Background */}
         <motion.div 
           className="absolute -top-10 -left-2 md:-left-12 text-black/5 z-0 pointer-events-none"
@@ -139,13 +123,15 @@ export const Testimonials = () => {
 
         {/* Controls */}
         <div className="flex items-center justify-center gap-6 mt-16">
-          <button 
+          <motion.button 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={handlePrev}
             className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-colors"
             aria-label="Previous testimonial"
           >
             <ChevronLeft size={20} />
-          </button>
+          </motion.button>
           
           <div className="flex gap-2">
             {testimonials.map((_, idx) => (
@@ -161,15 +147,17 @@ export const Testimonials = () => {
             ))}
           </div>
 
-          <button 
+          <motion.button 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={handleNext}
             className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-colors"
             aria-label="Next testimonial"
           >
             <ChevronRight size={20} />
-          </button>
+          </motion.button>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

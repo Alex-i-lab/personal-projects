@@ -5,7 +5,7 @@ import { cn } from '@/src/lib/utils';
 
 type PricingTier = 'distance' | 'hourly' | 'daily' | 'event';
 
-export const Hero = () => {
+export const Hero = ({ onBookNow }: { onBookNow?: () => void }) => {
   const [activeTab, setActiveTab] = useState<PricingTier>('distance');
   const [showConfirm, setShowConfirm] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -26,7 +26,11 @@ export const Hero = () => {
 
   const handleRequestRide = (e: React.FormEvent) => {
     e.preventDefault();
-    setShowConfirm(true);
+    if (onBookNow) {
+      onBookNow();
+    } else {
+      setShowConfirm(true);
+    }
   };
 
   const confirmBooking = () => {
@@ -36,13 +40,6 @@ export const Hero = () => {
       setIsConfirmed(false);
       setFormData({ pickup: '', dropoff: '', date: '', time: '', duration: '2', days: '1', eventType: 'Wedding' });
     }, 2000);
-  };
-
-  const scrollToForm = () => {
-    const formElement = document.getElementById('booking-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
   };
 
   const getTierLabel = (tier: PricingTier) => {
@@ -58,50 +55,43 @@ export const Hero = () => {
     <section className="relative min-h-[100svh] lg:min-h-[95vh] flex flex-col items-center justify-center pt-32 lg:pt-20 pb-[280px] lg:pb-0 px-6 overflow-visible">
       {/* Background Image / Product Shot */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-        <motion.img
+        <motion.video
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=2000"
-          alt="Luxury Car"
-          className="w-full h-full object-cover opacity-100"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white/50" />
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="https://res.cloudinary.com/dcy26s9jm/video/upload/v1774958725/Animate_image_looped_202603311359_agptom.jpg"
+          className="w-full h-full object-cover opacity-90"
+        >
+          <source src="https://res.cloudinary.com/dcy26s9jm/video/upload/v1774958725/Animate_image_looped_202603311359_agptom.mp4" type="video/mp4" />
+        </motion.video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-white/90" />
       </div>
 
       <div className="max-w-[1440px] mx-auto w-full relative z-10 flex flex-col items-center text-center mt-0 lg:mt-[-8vh]">
         <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.2, delayChildren: 0.1 } }
-          }}
-          className="mb-16 flex flex-col items-center"
+          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="mb-16"
         >
-          <motion.span 
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}
-            className="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold uppercase tracking-[0.3em] mb-6"
-          >
+          <span className="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
             Kigali's Premier Fleet
-          </motion.span>
-          <motion.h1 
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}
-            className="text-6xl md:text-9xl font-display font-medium tracking-tighter mb-6 text-white drop-shadow-lg"
-          >
+          </span>
+          <h1 className="text-6xl md:text-9xl font-display font-medium tracking-tighter mb-6 text-white drop-shadow-lg">
             Urban <span className="font-light italic text-white/90">Ride</span>
-          </motion.h1>
-          <motion.p 
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }}
-            className="text-lg md:text-xl font-medium tracking-wide text-white/90 max-w-2xl mx-auto drop-shadow-md mb-8"
-          >
+          </h1>
+          <p className="text-lg md:text-xl font-medium tracking-wide text-white/90 max-w-2xl mx-auto drop-shadow-md mb-8">
             Experience luxury mobility redefined. <br className="hidden md:block" />
             Premium chauffeur services tailored for you.
-          </motion.p>
+          </p>
           <motion.button 
-            variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1, transition: { type: "spring", bounce: 0.6 } } }}
-            onClick={scrollToForm}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onBookNow}
             className="bg-white text-black px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-white/90 transition-colors shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
           >
             Book a Ride
@@ -123,9 +113,9 @@ export const Hero = () => {
       {/* Floating Search Form */}
       <div id="booking-form" className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[35%] lg:translate-y-1/2 w-full max-w-6xl px-4 lg:px-6 z-20">
         <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.6, type: "spring", bounce: 0.3 }}
+          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="bg-white/80 backdrop-blur-3xl rounded-[32px] lg:rounded-full p-2 lg:p-3 border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)]"
         >
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-2">
@@ -174,18 +164,36 @@ export const Hero = () => {
               </div>
 
               {activeTab === 'distance' && (
-                <div className="flex-1 relative group min-w-[180px] border-t lg:border-t-0 lg:border-l border-black/5">
-                  <MapPin className="absolute left-5 top-1/2 -translate-y-1/2 text-black/20 group-focus-within:text-black transition-colors" size={16} />
-                  <input
-                    type="text"
-                    name="dropoff"
-                    required
-                    value={formData.dropoff}
-                    onChange={handleInputChange}
-                    placeholder="Dropoff"
-                    className="w-full bg-transparent border-none rounded-full py-4 pl-12 pr-4 focus:ring-0 text-sm placeholder:text-black/30"
-                  />
-                </div>
+                <>
+                  <div className="flex-1 relative group min-w-[180px] border-t lg:border-t-0 lg:border-l border-black/5">
+                    <MapPin className="absolute left-5 top-1/2 -translate-y-1/2 text-black/20 group-focus-within:text-black transition-colors" size={16} />
+                    <input
+                      type="text"
+                      name="dropoff"
+                      required
+                      value={formData.dropoff}
+                      onChange={handleInputChange}
+                      placeholder="Dropoff"
+                      className="w-full bg-transparent border-none rounded-full py-4 pl-12 pr-4 focus:ring-0 text-sm placeholder:text-black/30"
+                    />
+                  </div>
+                  <div className="flex-1 relative group min-w-[140px] border-t lg:border-t-0 lg:border-l border-black/5">
+                    <Timer className="absolute left-5 top-1/2 -translate-y-1/2 text-black/20 group-focus-within:text-black transition-colors" size={16} />
+                    <select
+                      name="duration"
+                      value={formData.duration}
+                      onChange={handleInputChange}
+                      className="w-full bg-transparent border-none rounded-full py-4 pl-12 pr-8 focus:ring-0 text-sm appearance-none cursor-pointer"
+                    >
+                      <option value="">Duration (Opt)</option>
+                      <option value="2">2 Hours</option>
+                      <option value="4">4 Hours</option>
+                      <option value="8">8 Hours</option>
+                      <option value="12">12 Hours</option>
+                      <option value="24">24 Hours</option>
+                    </select>
+                  </div>
+                </>
               )}
 
               {activeTab === 'hourly' && (
@@ -236,37 +244,14 @@ export const Hero = () => {
                 </div>
               )}
 
-              <div className="flex items-center w-full lg:w-auto border-t lg:border-t-0 lg:border-l border-black/5">
-                <div className="relative group flex-1 lg:min-w-[140px]">
-                  <Calendar className="absolute left-4 lg:left-5 top-1/2 -translate-y-1/2 text-black/20 group-focus-within:text-black transition-colors" size={16} />
-                  <input
-                    type="date"
-                    name="date"
-                    required
-                    value={formData.date}
-                    onChange={handleInputChange}
-                    className="w-full bg-transparent border-none rounded-full py-4 pl-10 lg:pl-12 pr-2 focus:ring-0 text-sm"
-                  />
-                </div>
-                <div className="relative group flex-1 lg:min-w-[110px] border-l border-black/5">
-                  <Clock className="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 text-black/20 group-focus-within:text-black transition-colors" size={16} />
-                  <input
-                    type="time"
-                    name="time"
-                    required
-                    value={formData.time}
-                    onChange={handleInputChange}
-                    className="w-full bg-transparent border-none rounded-full py-4 pl-9 lg:pl-10 pr-2 lg:pr-4 focus:ring-0 text-sm"
-                  />
-                </div>
-              </div>
-
-              <button 
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="w-full lg:w-auto bg-black text-white px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] hover:opacity-90 transition-opacity shrink-0 mt-2 lg:mt-0"
+                className="w-full lg:w-auto bg-black text-white px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] hover:opacity-90 transition-opacity shrink-0 mt-2 lg:mt-0 lg:ml-2"
               >
                 Search
-              </button>
+              </motion.button>
             </form>
           </div>
         </motion.div>
@@ -329,15 +314,6 @@ export const Hero = () => {
                             {activeTab === 'daily' && `${formData.pickup} (${formData.days} Days)`}
                             {activeTab === 'event' && `${formData.eventType} at ${formData.pickup}`}
                           </p>
-                        </div>
-                      </div>
-                      <div className="flex gap-4">
-                        <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center shrink-0">
-                          <Calendar size={18} className="text-black/40" />
-                        </div>
-                        <div>
-                          <p className="text-[11px] uppercase tracking-widest font-bold opacity-30 mb-1">Schedule</p>
-                          <p className="text-sm font-medium">{formData.date} at {formData.time}</p>
                         </div>
                       </div>
                     </div>
