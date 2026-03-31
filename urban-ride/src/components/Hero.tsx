@@ -77,9 +77,9 @@ export const Hero = ({ onBookNow }: { onBookNow?: () => void }) => {
           `}
         </style>
         <motion.video
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          initial={{ scale: 1.15, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.9 }}
+          transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
           autoPlay
           loop
           muted
@@ -95,31 +95,52 @@ export const Hero = ({ onBookNow }: { onBookNow?: () => void }) => {
       </div>
 
       <div className="max-w-[1440px] mx-auto w-full relative z-10 flex flex-col items-center text-center mt-0 lg:mt-[-8vh]">
-        <motion.div
-          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="mb-16"
-        >
-          <span className="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+        <div className="mb-16 overflow-hidden">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold uppercase tracking-[0.3em] mb-6"
+          >
             Kigali's Premier Fleet
-          </span>
-          <h1 className="text-6xl md:text-9xl font-display font-medium tracking-tighter mb-6 text-white drop-shadow-lg">
-            Urban <span className="font-light italic text-white/90">Ride</span>
-          </h1>
-          <p className="text-lg md:text-xl font-medium tracking-wide text-white/90 max-w-2xl mx-auto drop-shadow-md mb-8">
+          </motion.span>
+          
+          <div className="overflow-hidden mb-6">
+            <motion.h1 
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1.5, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="text-6xl md:text-9xl font-display font-medium tracking-tighter text-white drop-shadow-2xl"
+            >
+              Urban <span className="font-light italic text-white/90">Ride</span>
+            </motion.h1>
+          </div>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-lg md:text-xl font-medium tracking-wide text-white/90 max-w-2xl mx-auto drop-shadow-md mb-10"
+          >
             Experience luxury mobility redefined. <br className="hidden md:block" />
             Premium chauffeur services tailored for you.
-          </p>
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onBookNow}
-            className="bg-white text-black px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-white/90 transition-colors shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            Book a Ride
-          </motion.button>
-        </motion.div>
+            <motion.button 
+              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onBookNow}
+              className="bg-white text-black px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-white/90 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+            >
+              Book a Ride
+            </motion.button>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
@@ -136,9 +157,9 @@ export const Hero = ({ onBookNow }: { onBookNow?: () => void }) => {
       {/* Floating Search Form */}
       <div id="booking-form" className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[35%] lg:translate-y-1/2 w-full max-w-6xl px-4 lg:px-6 z-20">
         <motion.div
-          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="bg-white/80 backdrop-blur-3xl rounded-[32px] lg:rounded-full p-2 lg:p-3 border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)]"
         >
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-2">

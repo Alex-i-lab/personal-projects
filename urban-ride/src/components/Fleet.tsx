@@ -68,11 +68,11 @@ export const Fleet = ({ onBookCar }: { onBookCar?: (carId: number) => void }) =>
   return (
     <section id="fleet" className="py-32 bg-muted/30">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-        <div className="mb-24 text-center">
+        <div className="mb-24 text-center overflow-hidden">
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ y: "100%" }}
+            whileInView={{ y: 0 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-12"
           >
@@ -80,9 +80,9 @@ export const Fleet = ({ onBookCar }: { onBookCar?: (carId: number) => void }) =>
           </motion.h2>
           
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
             className="max-w-6xl mx-auto space-y-8"
           >

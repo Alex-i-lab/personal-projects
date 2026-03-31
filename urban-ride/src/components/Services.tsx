@@ -24,31 +24,41 @@ export const Services = () => {
   return (
     <section id="services" className="py-32 px-6 md:px-12 max-w-[1440px] mx-auto">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-12">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-          className="max-w-2xl"
-        >
-          <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-8">
+        <div className="max-w-2xl overflow-hidden">
+          <motion.h2 
+            initial={{ y: "100%" }}
+            whileInView={{ y: 0 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-8"
+          >
             Designed for <br />
-            <span className="opacity-30">seamless travel.</span>
-          </h2>
-          <p className="text-[17px] text-black/50 leading-relaxed max-w-lg">
+            <span className="opacity-30 italic">seamless travel.</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true }}
+            className="text-[17px] text-black/50 leading-relaxed max-w-lg"
+          >
             We provide a refined transportation experience that prioritizes your time and comfort above all else.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              duration: 1.2, 
+              delay: index * 0.15, 
+              ease: [0.22, 1, 0.36, 1] 
+            }}
+            viewport={{ once: true, margin: "-50px" }}
             className="group cursor-pointer max-w-[280px] sm:max-w-[320px] md:max-w-none mx-auto w-full"
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] mb-8 bg-muted">
